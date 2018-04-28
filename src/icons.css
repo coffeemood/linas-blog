@@ -1,0 +1,93 @@
+@font-face {
+    font-family: 'si';
+    src: url('./icons/socicon.eot');
+    src: url('./icons/socicon.eot?#iefix') format('embedded-opentype'),
+         url('./icons/socicon.woff') format('woff'),
+         url('./icons/socicon.ttf') format('truetype'),
+         url('./icons/socicon.svg#icomoonregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    @font-face {
+        font-family:si;
+        src: url(./icons/socicon.svg) format(svg);
+    }
+}
+
+.soc {
+    overflow:hidden;
+    margin:0; padding:0;
+    list-style:none;
+}
+
+.soc li {
+    display:inline-block;
+    *display:inline;
+    zoom:1;
+}
+
+.soc li a {
+    font-family:si!important;
+    font-style:normal;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -ms-box-sizing:border-box;
+    -o-box-sizing:border-box;
+    box-sizing:border-box;
+
+    -o-transition:.1s;
+    -ms-transition:.1s;
+    -moz-transition:.1s;
+    -webkit-transition:.1s;
+    transition:.1s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+
+    overflow:hidden;
+    text-decoration:none;
+    text-align:center;
+    display:block;
+    position: relative;
+    z-index: 1;
+    width: 47px;
+    height: 47px;
+    line-height: 47px;
+    font-size: 25px;
+    -webkit-border-radius: 13px;
+    -moz-border-radius: 13px;
+    border-radius: 13px;
+    margin-right: 34px;
+    color: #30080f;
+/*    background-color: #CDA435;*/
+}
+
+.soc a:hover {
+    background-color: #CDA435;
+    z-index: 2;
+    filter: brightness(125%);
+}
+
+.soc-icon-last{
+    margin:0 !important;
+}
+
+.soc-twitter:before {
+    content:'\e040';
+}
+.soc-facebook:before {
+    content:'\e041';
+}
+.soc-linkedin:before {
+    content:'\e049';
+}
+.soc-instagram:before {
+    content:'\e057';
+}
