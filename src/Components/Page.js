@@ -4,11 +4,14 @@ import React from 'react';
 import SidebarNav from './Sidebar';
 import NotFound from '../NotFound';
 import PrismicReact from 'prismic-reactjs';
-import { Image, Segment, Grid } from 'semantic-ui-react';
+import { Image, Segment, Grid, Icon } from 'semantic-ui-react';
 import { flatten, times } from 'lodash';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; 
 import moment from 'moment';
+
 //import 'semantic-ui-css/semantic.min.css';
+
+
 
 // Declare your component
 export default class Page extends React.Component {
@@ -81,9 +84,15 @@ export default class Page extends React.Component {
                 <div id='logoTextBoxNoSidebar' onClick={() => this.flipSidebar()}>
                      <h3 id='logoText'> LN </h3>
                  </div> 
+                 <div>
+                     <Icon name='arrow circle left' size='large' onClick={() => this.props.history.goBack()} />
+                 </div> 
                </div> 
-                <div class="thirteen wide column" id='sectionTitleDivNoSideBar'>
+                <div class="ten wide column" id='sectionTitleDivNoSideBar'>
                  <h3 id='mainPageSectionIndicator'> My Colourful Life </h3>
+                </div>
+                <div class="three wide column" style={{float: 'left' }}>
+                    <div id='mainPageBackIconNoSideBar'><Icon name='arrow left' size='small' onClick={() => this.props.history.goBack()} style={{margin: '0px', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)'}}/></div>
                 </div>
              </div>
           ) } else {
@@ -98,6 +107,7 @@ export default class Page extends React.Component {
 //      <div class="ui cube shape" id="imageDiv"><Image src={require('../img/adult-beautiful-casual-372042.jpg')} size='medium' id='profileImage'/></div>
       
       
+     console.log(this.props)
      let headerInfo = this.renderHeaderInfo()
      let pageTitle = this.renderMainPageTitle()
      
@@ -109,7 +119,8 @@ export default class Page extends React.Component {
          ))
          
         return (
-        <div id='mainPage'>
+          
+            <div id='mainPage'>
 
                 <div id="mainPageSectionIndicatorDiv">
                   { pageTitle }
@@ -130,10 +141,13 @@ export default class Page extends React.Component {
 
                 </div>
               </div>
+          
         );
       } else if (this.state.notFound) {
         return <NotFound />;
       }
       return <h1>Loading ... </h1>;
     }
-  }
+}
+
+

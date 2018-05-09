@@ -18,6 +18,15 @@ html, body{
     background: #FF0000;
 }
 */
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 
 
 
@@ -41,9 +50,61 @@ html, body{
   font-size: large;
 }
 
+#locationMotherDiv, #locationMotherDiv > img {
+    border-radius: 8px 8px 8px 8px;
+    -moz-border-radius: 8px 8px 8px 8px;
+    -webkit-border-radius: 8px 8px 8px 8px;
+    border: 0px solid #000000;
+/*    opacity: .85*/
+}
+
+
+/*
+
+#locationMotherDiv:hover {
+    opacity: .5;
+    transition: all .3s ease-in;
+}
+*/
+
+#locationTextContainer, #locationTextContainer > div {
+    
+    -ms-transform: rotate(-20deg); 
+    -webkit-transform: rotate(-20deg);
+    transform: rotate(-20deg);
+    
+}
+
+#locationLabel {
+    text-decoration: none;
+}
+
+#locationMotherDiv > #locationLabel:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -16px;
+  left: 0;
+  background-color: white;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.2s ease-in 0s;
+  transition: all 0.2s ease-in 0s;
+}
+
+#locationMotherDiv:hover #locationLabel:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
 #bookCardMotherDiv {
     position: relative;
-    margin-bottom: 25px
+    max-width: 85%;
+    margin: 0 auto;
+    margin-bottom: 25px;
 }
 
 #bookCardCover {
@@ -84,7 +145,7 @@ html, body{
     font-size: 12px;
     margin-top: -5px;
     border-bottom: 1px solid transparent;
-    transition: all ease-in 0.3s;
+    transition: all ease-in 0.2s;
 }
 
 #bookCardDetail a:hover {
@@ -106,6 +167,9 @@ html, body{
 #menubarGrid {
     height: 100vh !important ; 
     position: relative;
+    animation: 0.3s ease-in-out 0s 1 rollIn;
+/*    transition: width ease-in 0.1s, height ease-in 0.1s; */
+    
 }
 
 
@@ -257,7 +321,7 @@ html, body{
 
 
 #mainContentGrid {
-      
+  transition: width ease-in 0.2s, height ease-in 0.2s; 
 }
 
 
@@ -271,17 +335,10 @@ div#root, #motherGrid {
 }
 
 #mainPage {
-    margin-bottom: 10px;
-/*    padding-left: 10px; */
-/*    padding-right: 10px;*/
-    /* Raised platform */ 
     
-/*
-    -webkit-box-shadow: -2px 0px 12px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: -2px 0px 12px 0px rgba(0,0,0,0.75);
-    box-shadow: -2px 0px 12px 0px rgba(0,0,0,0.75);
-*/
-   
+    margin-bottom: 10px;
+    animation: 0.5s ease-in-out 0s 1 fadeInRight;
+    transition: all .5s linear;
     
     
 }
@@ -343,17 +400,13 @@ div#root, #motherGrid {
 #detailedSegment-fullscreen {
     
     margin-top: 100px;
-    margin-left: 85px;
-    margin-right: 15px;
-    margin-bottom: 35px; 
-    padding-left: 45px;
-    padding-right: 45px;
-    
+    margin-left: 115px;
+    /* margin-right: 15px; */
+    margin-bottom: 35px;
+    padding-left: 65px;
+    /* padding-right: 45px; */
     font-family: "Arvo";
     text-align: center;
-    
-    /* CURVATURE */
-    
     border-radius: 18px 18px 18px 18px;
     -moz-border-radius: 18px 18px 18px 18px;
     -webkit-border-radius: 18px 18px 18px 18px;
@@ -405,6 +458,29 @@ div#blogSegment > p {
 }
 
 
+#mainPageBackIconNoSideBar {
+    color: #CDA435;
+    width: 45px;
+    height: 45px;
+    position: fixed;
+    margin-top: -7px;
+    right: 2.5%;
+    font-size: 44px;
+    background-color: black;
+    border: 1px solid #CDA435;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-radius: 200px 200px 200px 200px;
+    -moz-border-radius: 200px 200px 200px 200px;
+    -webkit-border-radius: 200px 200px 200px 200px;
+    border: 1px dashed #000000;
+}
+
+#mainPageBackIconNoSideBar:hover {
+    background-color: #CDA435;    
+    color: black;
+}
+
 #pageTitleSegment {
     margin-left: 25px;
     margin-right: 15px;
@@ -436,7 +512,8 @@ div#blogSegment > p {
 #sectionTitleDivNoSideBar {
     float: left;
     max-width: 66%;
-    padding-top: 25px
+    padding-top: 25px;
+    margin-top: -5px;
 }
 
 #logoTextBoxSidebar {
@@ -451,8 +528,17 @@ div#blogSegment > p {
     border: 1px double #CDA435;
     width: 45px;
     height: 45px;
-    margin-left: 20px;
-    display: table
+    margin-top: -7px;
+    left: 2.5%;
+    display: table;
+    background-color: black;
+    position: fixed;
+}
+
+#logoTextBoxSidebar:hover, #logoTextBoxNoSidebar:hover, #logoText:hover {
+    background-color: #CDA435;    
+    color: black;
+/*    filter: brightness(95%);*/
 }
 
 #logoText {
@@ -463,6 +549,8 @@ div#blogSegment > p {
     font-size: 26px;
     letter-spacing: 1.5px;
 }
+
+
 
 
 @keyframes App-logo-spin {

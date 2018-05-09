@@ -7,8 +7,9 @@ import { Sidebar, Segment, Menu, Icon, Image, List, Button, Divider } from "sema
 import { Link } from 'react-router-dom'
 import 'semantic-ui-css/semantic.min.css';
 
+
 // Declare your component
-export default class SidebarNav extends React.Component {
+class SidebarNav extends React.Component {
 
   state = {
     sidebar: null,
@@ -21,7 +22,6 @@ export default class SidebarNav extends React.Component {
   }
 
   componentWillReceiveProps(props) {
-    console.log(props)
     this.fetchSinglePage(props);
   }
 
@@ -30,7 +30,6 @@ export default class SidebarNav extends React.Component {
       // We are using the function to get a document by its uid
       return props.prismicCtx.api.getSingle('linas-sidebar').then((doc) => {
         if (doc) {
-       
           // We put the retrieved content in the state as a doc variable
           this.setState({ sidebar: doc });
         } else {
@@ -102,6 +101,7 @@ export default class SidebarNav extends React.Component {
     // We will fill in this section in Step 3...
      if (this.state.sidebar) {
         return (
+           
           <div class="four wide column" id='menubarGrid'>
           <div class="ui huge left vertical menu" id='menubar'>
             <div id='menubarTitle'>
@@ -112,7 +112,7 @@ export default class SidebarNav extends React.Component {
              <div id="menubarImgGrid"> 
                  <Image src={require('../img/pexels-photo-428338.jpg')} size='medium' circular id='sidebarImg'/>
              </div>
-             
+
              <h3 id='profileSegment'> Menu </h3>
              <hr id='sidebarHori'></hr>
              <div class="menubarItemGrid">
@@ -130,12 +130,18 @@ export default class SidebarNav extends React.Component {
              {featuredList}
              <br></br>
           </div> 
-        </div>           
-          
+        </div>  
+            
+                   
         );
       } else if (this.state.notFound) {
         return <NotFound />;
+      } else {
+        return <h1>Loading ... </h1>;
       }
-      return <h1>Loading ... </h1>;
+      
     }
-  }
+}
+
+export default SidebarNav
+
