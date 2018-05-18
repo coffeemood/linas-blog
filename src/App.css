@@ -5,6 +5,7 @@ html, body{
   width: 100vw;
   margin:0px;
   padding:0px;
+    -webkit-font-smoothing: antialiased;
 /*  background-color: #FAAB81;*/
     
 }
@@ -50,67 +51,126 @@ html, body{
   font-size: large;
 }
 
-#locationMotherDiv, #locationMotherDiv > img {
+#locationMotherDiv, #locationImageWrapper {
     border-radius: 8px 8px 8px 8px;
     -moz-border-radius: 8px 8px 8px 8px;
     -webkit-border-radius: 8px 8px 8px 8px;
+    
     border: 0px solid #000000;
-/*    opacity: .85*/
 }
 
 
-/*
+#locationMotherDiv {
+    position: relative; 
+    max-width: 75%;
+    margin: 0 auto;
+    margin-bottom: 65px;
+    color: white;
+    height: 550px;
+    padding-left: 5px;
+    padding-right: 5px
+}
+
+#locationImageWrapper {
+    -webkit-box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.75);
+    
+    display: inline-block;
+    overflow: hidden;
+    width: 85%;
+    height: 100%;
+}
+
+#locationTextContainer {
+    font-size: 30px !important;
+    line-height: 1.29;
+    -webkit-box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.75);
+    transition: all 0.2s linear;
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 33%;
+    width: 40%;
+    background-color: #161616;
+    padding-left: 5px;
+    padding-right: 5px;
+    opacity: .85;
+    
+}
+
+#locationMotherDiv:hover #locationTextContainer {
+/*    width: 74% !important;*/
+/*    height: 100% !important;*/
+    color: #CDA435;
+    font-size: 36px !important;
+}
 
 #locationMotherDiv:hover {
-    opacity: .5;
-    transition: all .3s ease-in;
+    cursor: pointer;
 }
-*/
 
-#locationTextContainer, #locationTextContainer > div {
-    
-    -ms-transform: rotate(-20deg); 
-    -webkit-transform: rotate(-20deg);
-    transform: rotate(-20deg);
-    
+#locationImageWrapper > img {
+    transition: all 0.25s ease-in-out;
+}
+
+#locationMotherDiv:hover #locationImageWrapper > img {
+     transform:scale(1.35);
+    -ms-transform:scale(1.35); /* IE 9 */
+    -moz-transform:scale(1.35); /* Firefox */
+    -webkit-transform:scale(1.35); /* Safari and Chrome */
+    -o-transform:scale(1.35); 
+}
+
+#locationImage {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 #locationLabel {
     text-decoration: none;
-}
-
-#locationMotherDiv > #locationLabel:before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  bottom: -16px;
-  left: 0;
-  background-color: white;
-  visibility: hidden;
-  -webkit-transform: scaleX(0);
-  transform: scaleX(0);
-  -webkit-transition: all 0.2s ease-in 0s;
-  transition: all 0.2s ease-in 0s;
-}
-
-#locationMotherDiv:hover #locationLabel:before {
-  visibility: visible;
-  -webkit-transform: scaleX(1);
-  transform: scaleX(1);
+    
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    letter-spacing: 2.29px;
+    transform: translate(-50%, -50%);
+    font-family: "Crimson Text", serif;
+    max-width: 100%; 
+    max-height: 100%
 }
 
 #bookCardMotherDiv {
     position: relative;
-    max-width: 85%;
+    max-width: 75%;
     margin: 0 auto;
     margin-bottom: 25px;
+    transition: all 0.2s ease-in-out;
+    
+}
+
+#bookCardMotherDiv:hover {
+   cursor: pointer;
+   transform: translate(0, -1em) 
+}
+
+#bookCardMotherDiv:hover #bookCardDetail, #bookCardMotherDiv:hover #bookCardCover {
+    -webkit-box-shadow: 7px 7px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 7px 7px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 7px 7px 5px 0px rgba(0,0,0,0.75);
 }
 
 #bookCardCover {
     height: 495px; 
     display: block;
     border: 2px solid #000000;
+    transition: all 0.2s ease-in-out;
 }
 
 #bookCardCover > img {
@@ -129,7 +189,8 @@ html, body{
     margin-left: 25%;
     padding-top: 25px;
     padding-bottom: 25px;
-    border: 2px solid #000000
+    border: 2px solid #000000;
+    transition: all 0.2s linear;
 }
 
 #bookCardDetail h4 {
@@ -148,10 +209,62 @@ html, body{
     transition: all ease-in 0.2s;
 }
 
-#bookCardDetail a:hover {
+#bookCardMotherDiv:hover #bookCardDetail > a {
     border-color: #CDA435
-    
+
 }
+
+
+#poemTextContainer {
+    font-size: 16px !important;
+    line-height: 1.29;
+    -webkit-box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.75);
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 33%;
+    width: 40%;
+    background-color: #161616;
+    display: none;
+    padding-left: 5px;
+    padding-right: 5px;
+    opacity: .85;
+    transition: all 0.2s linear; 
+}
+
+#poemLabel {
+    
+    color: white;
+    display: none;
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    letter-spacing: 2.29px;
+    transform: translate(-50%, -50%);
+    font-family: "Crimson Text", serif;
+    max-width: 100%; 
+    max-height: 100%;
+    transition: all 0.2s linear; 
+}
+
+
+#poemMotherDiv:hover #poemTextContainer {
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#poemMotherDiv:hover #poemLabel {
+    display: block;
+    cursor: pointer;
+    color: #CDA435;
+}
+
 
 #blogCard {
     font-family: 'Open Sans' !important;
@@ -270,7 +383,7 @@ html, body{
 }
 
 #mainPageSectionIndicator {
-    margin-left: -10px;
+    margin-left: -2.5%;
     color: #CDA435;
     font-family: 'Open Sans' !important;
     text-transform: uppercase;
@@ -338,8 +451,7 @@ div#root, #motherGrid {
     
     margin-bottom: 10px;
     animation: 0.5s ease-in-out 0s 1 fadeInRight;
-    transition: all .5s linear;
-    
+    transition: all 0.5s linear;
     
 }
 
@@ -380,10 +492,10 @@ div#root, #motherGrid {
     
     margin-top: 100px;
     margin-left: 25px;
-    margin-right: 15px;
+    margin-right: 25px;
     margin-bottom: 35px; 
-    padding-left: 45px;
-    padding-right: 45px;
+    padding-left: 70px;
+    padding-right: 50px;
     
     font-family: "Arvo";
     text-align: center;
@@ -401,10 +513,10 @@ div#root, #motherGrid {
     
     margin-top: 100px;
     margin-left: 115px;
-    /* margin-right: 15px; */
+    margin-right: 15px; 
     margin-bottom: 35px;
-    padding-left: 65px;
-    /* padding-right: 45px; */
+    padding-left: 115px;
+    padding-right: 90px; 
     font-family: "Arvo";
     text-align: center;
     border-radius: 18px 18px 18px 18px;
@@ -413,7 +525,6 @@ div#root, #motherGrid {
     border: 0px solid #000000;
     
 }
-
 
 #mainPageImgDiv {
     max-width: 66%;
@@ -473,12 +584,13 @@ div#blogSegment > p {
     border-radius: 200px 200px 200px 200px;
     -moz-border-radius: 200px 200px 200px 200px;
     -webkit-border-radius: 200px 200px 200px 200px;
-    border: 1px dashed #000000;
+    border: 0px solid #000000;
 }
 
 #mainPageBackIconNoSideBar:hover {
     background-color: #CDA435;    
     color: black;
+    cursor: pointer;
 }
 
 #pageTitleSegment {
@@ -538,6 +650,7 @@ div#blogSegment > p {
 #logoTextBoxSidebar:hover, #logoTextBoxNoSidebar:hover, #logoText:hover {
     background-color: #CDA435;    
     color: black;
+    cursor: pointer;
 /*    filter: brightness(95%);*/
 }
 

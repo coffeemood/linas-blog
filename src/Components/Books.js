@@ -102,17 +102,7 @@ export default class Books extends React.Component {
              (  
                <BookCard></BookCard>
               )
-         ))
-         
-//         console.log(content)
-         
-//         <div id="mainProfile">
-//                <Image src={require('../img/adult-beautiful-casual-372042.jpg')} size='large' id='imageDiv'/>
-//            </div>
-//            
-//            <h3>{this.state.homepage.data['homepage-subtitle'][0].text}</h3>
-//            
-            
+         )) 
          
         return (
           <div id='mainPage' ref='topNode'>

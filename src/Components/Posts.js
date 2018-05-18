@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import SidebarNav from './Sidebar';
 import NotFound from '../NotFound';
 import PrismicReact from 'prismic-reactjs';
-import { Image, Card, Grid, Divider, Segment } from 'semantic-ui-react';
+import { Image, Card, Grid, Divider, Segment, Icon } from 'semantic-ui-react';
 import ScrollToTop from 'react-scroll-up';
 import { flatten, times } from 'lodash';
 import { Link } from 'react-router-dom'
@@ -209,6 +209,6 @@ export default class Posts extends React.Component {
       } else if (this.state.notFound) {
         return <NotFound />;
       }
-      return <h1>Loading ... </h1>;
+      return <Icon name='spinner' loading color='black' size='huge' style={{position: 'absolute', top:'50%', left: '50%', marginLeft: '-2.5%', marginTop: '-2.5%'}}/>;
     }
   }
