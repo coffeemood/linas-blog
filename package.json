@@ -7,6 +7,7 @@
     "jquery": "~3.2.1",
     "js-cookie": "^2.2.0",
     "lodash": "^4.17.5",
+    "moment": "^2.22.1",
     "prismic-javascript": "^1.4.1",
     "prismic-reactjs": "^0.2.0",
     "qs": "^6.4.0",
@@ -19,8 +20,8 @@
     "react-masonry-component": "^6.2.0",
     "react-router-dom": "~4.2.2",
     "semantic-ui-css": "^2.3.0",
-    "whatwg-fetch": "~2.0.3",
-    "react-scripts": "~1.0.14"
+    "react-scripts": "~1.0.14",
+    "whatwg-fetch": "~2.0.3"
   },
   "devDependencies": {
     "case-sensitive-paths-webpack-plugin": "^2.1.2",
