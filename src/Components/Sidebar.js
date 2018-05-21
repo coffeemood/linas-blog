@@ -81,13 +81,31 @@ class SidebarNav extends React.Component {
       <List.Item>
         <List.Content>
           <List.Header>The AUF Journey </List.Header>
-          They say you never forget your first
+          My first job 
         </List.Content>
       </List.Item>
       <List.Item>
         <List.Content>
           <List.Header>All my past romances </List.Header>
           The Goods, The Bads & The Ugly 
+        </List.Content>
+      </List.Item>
+      <List.Item>
+        <List.Content>
+          <List.Header>The Poets </List.Header>
+          Contemplating Night and Day  
+        </List.Content>
+      </List.Item>
+      <List.Item>
+        <List.Content>
+          <List.Header>A Night Out On The Town </List.Header>
+          City Light Sparkles, Whispers of the Wind  
+        </List.Content>
+      </List.Item>
+      <List.Item>
+        <List.Content>
+          <List.Header>Paris </List.Header>
+          Croissant, Eiffel Tower & Love Birds 
         </List.Content>
       </List.Item>
     </List>

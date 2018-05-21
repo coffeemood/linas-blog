@@ -151,6 +151,12 @@ export default class Poems extends React.Component {
             }
          })   
          
+         
+         let content2 = flatten(times(45, (index) => 
+             (  
+              <div> COMING SOON </div>
+              )))
+         
         return (
           <div id='mainPage' ref='topNode'>
                 <div id="mainPageSectionIndicatorDiv">
@@ -161,12 +167,7 @@ export default class Poems extends React.Component {
             
             <div color='orange' id={detailedCss}>
              
-              <Masonry>
-               
-                {content.map(c => c)}
-                
-            </Masonry>
-              
+              { content2 }
                 
             </div>
           </div>

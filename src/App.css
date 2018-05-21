@@ -51,6 +51,14 @@ html, body{
   font-size: large;
 }
 
+ul.soc > li:hover a {
+    background-image:
+    linear-gradient(
+      to right, 
+      #F24E20, #CDA435
+    );
+}
+
 #locationMotherDiv, #locationImageWrapper {
     border-radius: 8px 8px 8px 8px;
     -moz-border-radius: 8px 8px 8px 8px;
@@ -88,7 +96,7 @@ html, body{
     -webkit-box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.75);
-    transition: all 0.2s linear;
+    transition: all 0.25s ease-in-out;
     
     position: absolute;
     top: 50%;
@@ -99,15 +107,18 @@ html, body{
     background-color: #161616;
     padding-left: 5px;
     padding-right: 5px;
-    opacity: .85;
-    
+    opacity: .88;
 }
 
 #locationMotherDiv:hover #locationTextContainer {
-/*    width: 74% !important;*/
-/*    height: 100% !important;*/
+    width: 84% !important;
+    height: 100% !important;
     color: #CDA435;
-    font-size: 36px !important;
+/*    font-size: 42px !important;*/
+    text-decoration: underline;
+    border-radius: 8px 8px 8px 8px;
+    -moz-border-radius: 8px 8px 8px 8px;
+    -webkit-border-radius: 8px 8px 8px 8px;
 }
 
 #locationMotherDiv:hover {
@@ -118,11 +129,12 @@ html, body{
     transition: all 0.25s ease-in-out;
 }
 
+
 #locationMotherDiv:hover #locationImageWrapper > img {
      transform:scale(1.35);
-    -ms-transform:scale(1.35); /* IE 9 */
-    -moz-transform:scale(1.35); /* Firefox */
-    -webkit-transform:scale(1.35); /* Safari and Chrome */
+    -ms-transform:scale(1.35); 
+    -moz-transform:scale(1.35); 
+    -webkit-transform:scale(1.35); 
     -o-transform:scale(1.35); 
 }
 
@@ -310,17 +322,13 @@ html, body{
     border: 0px solid #B2B4B5;
 /*    border-right: 0.1px solid #B2B4B5;*/
     
-    
-/*
-    -webkit-box-shadow: 2px 0px 12px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 2px 0px 12px 0px rgba(0,0,0,0.75);
-    box-shadow: 2px 0px 12px 0px rgba(0,0,0,0.75);
-    
-*/
+
     /* FONTS */
         
     font-family: "Lato";
     text-align: center;
+    
+    background-image: linear-gradient(to right, white,#F7F1E3)
 
 }
 
@@ -329,6 +337,12 @@ html, body{
     padding-top: 16px;
     padding-bottom: 16px;
     color: #CDA435;
+    
+    /* Border Radius */ 
+    border-radius: 0px 0px 35px 35px;
+    -moz-border-radius: 0px 0px 35px 35px;
+    -webkit-border-radius: 0px 0px 35px 35px;
+    border: 0px solid #000000;
     
 }
 
@@ -380,6 +394,12 @@ html, body{
     padding-bottom: 26px;
     width: 100%;
     background-color: black;
+    
+    /* Border Radius */ 
+    border-radius: 0px 0px 30px 30px;
+    -moz-border-radius: 0px 0px 30px 30px;
+    -webkit-border-radius: 0px 0px 30px 30px;
+    border: 0px solid #000000;
 }
 
 #mainPageSectionIndicator {
@@ -405,7 +425,14 @@ html, body{
 
 #menubar > div.menubarItemGrid > a > a:hover {  /* Menubar Items  */ 
 
-  background-color: #CDA435;    
+/*  background-color: #CDA435;    */
+    
+  background-image:
+    linear-gradient(
+      to right, 
+      #F24E20, #CDA435
+    );
+    
   color: CDA435;
   filter: brightness(125%);
 
@@ -422,13 +449,30 @@ html, body{
   margin-bottom: 10px;
   -webkit-border-radius: 13px;
   -moz-border-radius: 13px;
+    
+    
+    
+ 
+ transition: background-image 0.5s ease-out;
+ -webkit-transition: background-image 0.5s ease-out;
   
 }
 
 #featuredList div.item:hover {
-  background-color: #CDA435;    
-  color: CDA435;
+    
+  
+  background-image:
+    linear-gradient(
+      to right, 
+      #F24E20, #CDA435
+    );
+ 
+/*  color: #CDA435;*/
   filter: brightness(125%);
+}
+
+#featuredList > div.item:hover div.content {
+  
 }
 
 
@@ -439,6 +483,8 @@ html, body{
 
 
 div#root, #motherGrid {
+  
+  background-image: linear-gradient(to right, #F7F1E3, #EFE2C3);  
   position: fixed;
   top: 0;
   left: 0;
@@ -452,6 +498,8 @@ div#root, #motherGrid {
     margin-bottom: 10px;
     animation: 0.5s ease-in-out 0s 1 fadeInRight;
     transition: all 0.5s linear;
+    
+    background-image: linear-gradient(to right, #F7F1E3, #EFE2C3)
     
 }
 
@@ -578,7 +626,7 @@ div#blogSegment > p {
     right: 2.5%;
     font-size: 44px;
     background-color: black;
-    border: 1px solid #CDA435;
+    border: 1.5px double #CDA435 !important;
     padding-top: 3px;
     padding-bottom: 3px;
     border-radius: 200px 200px 200px 200px;
@@ -588,6 +636,7 @@ div#blogSegment > p {
 }
 
 #mainPageBackIconNoSideBar:hover {
+    border: none;
     background-color: #CDA435;    
     color: black;
     cursor: pointer;

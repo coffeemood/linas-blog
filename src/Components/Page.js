@@ -84,9 +84,6 @@ export default class Page extends React.Component {
                 <div id='logoTextBoxNoSidebar' onClick={() => this.flipSidebar()}>
                      <h3 id='logoText'> LN </h3>
                  </div> 
-                 <div>
-                     <Icon name='arrow circle left' size='large' onClick={() => this.props.history.goBack()} />
-                 </div> 
                </div> 
                 <div class="ten wide column" id='sectionTitleDivNoSideBar'>
                  <h3 id='mainPageSectionIndicator'> My Colourful Life </h3>
