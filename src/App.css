@@ -59,6 +59,12 @@ ul.soc > li:hover a {
     );
 }
 
+/*
+.ui.dimmer {
+    background-color: rgba(0,0,0,.95);
+}
+*/
+
 #locationMotherDiv, #locationImageWrapper {
     border-radius: 8px 8px 8px 8px;
     -moz-border-radius: 8px 8px 8px 8px;
@@ -575,7 +581,8 @@ div#root, #motherGrid {
 }
 
 #mainPageImgDiv {
-    max-width: 66%;
+    max-width: 100%;
+    max-height: 70%;
     padding-top: 50px;
     margin: 0 auto;
 }
@@ -676,6 +683,31 @@ div#blogSegment > p {
     padding-top: 25px;
     margin-top: -5px;
 }
+
+
+#logoFooter {
+/*    border: 1px double black;*/
+    
+    background-image:
+    linear-gradient(
+      to right, 
+      #F24E20, #CDA435
+    );
+    width:  75px;
+    height: 75px;
+    margin: 0 auto;
+    display: table;
+}
+
+#logoTextFooter {
+    vertical-align: middle;
+    display: table-cell;
+    color: black;
+    font-family: 'Grand Hotel', cursive;
+    font-size: 37px;
+    letter-spacing: 1.5px;
+}
+
 
 #logoTextBoxSidebar {
     border: 1px double #CDA435;

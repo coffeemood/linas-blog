@@ -23,6 +23,7 @@ export default class Posts extends React.Component {
   componentWillMount() {
     this.fetchSinglePage(this.props);
     this.flipSidebar = this.flipSidebar.bind(this);
+    this.flipFooter = this.flipFooter.bind(this);
     this.scrollToTop = this.scrollToTop.bind(this);
     this.state = { width: 0, height: 0 };
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
@@ -76,6 +77,12 @@ export default class Posts extends React.Component {
       let show = this.props.showSidebar 
       show = !show
       this.props.flipSidebar(show)
+  }
+  
+  flipFooter = () => {
+      let show = this.props.showFooter
+      show = !show
+      this.props.flipFooter(show)
   }
   
   renderMainPageTitle = () => {

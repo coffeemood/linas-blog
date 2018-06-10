@@ -91,3 +91,11 @@
 .soc-instagram:before {
     content:'\e057';
 }
+
+#iconFooter {
+    color: #CDA435
+}
+
+#iconFooter:hover {
+    filter: brightness(95%) !important;
+}

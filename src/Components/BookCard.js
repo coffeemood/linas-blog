@@ -3,6 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Image, Card, Grid, Divider, Segment } from 'semantic-ui-react';
+import { Link } from 'react-router-dom'
 
 // Declare your component
 export default class BookCard extends React.Component {
@@ -18,7 +19,7 @@ export default class BookCard extends React.Component {
       let bg = "../img/book1.jpg"
         return (
             <div>    
-                  <div id='bookCardMotherDiv'>
+                  <Link style={{color: 'black' }}to='/page/1'><div id='bookCardMotherDiv'>
                       <div id='bookCardCover' >
                         <img src={require('../img/book2.jpg')}></img>
                       </div>
@@ -26,7 +27,7 @@ export default class BookCard extends React.Component {
                           <h4> This Soviet Poet Fought Against Stalin With Her Words — & She Can Teach Us About Resistance </h4>
                           <a> Read More </a>
                       </div>
-                  </div>
+                      </div></Link>
                   <div id='bookCardMotherDiv'>
                       <div id='bookCardCover' >
                         <img src={require('../img/book3.jpg')}></img>

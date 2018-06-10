@@ -46,6 +46,7 @@ class SidebarNav extends React.Component {
       show = !show
       this.props.flipSidebar(show)
   }
+  
 
   rendermediaBar = () => { return (
       
@@ -112,6 +113,7 @@ class SidebarNav extends React.Component {
   )}
   
   render() {
+      
     let sidebar = this.state.sidebar 
     let socialMedia = this.rendermediaBar()
     let featuredList = this.renderFeatured() 
@@ -123,7 +125,7 @@ class SidebarNav extends React.Component {
           <div class="four wide column" id='menubarGrid'>
           <div class="ui huge left vertical menu" id='menubar'>
             <div id='menubarTitle'>
-             <div id='logoTextBoxSidebar' onClick={() => this.flipSidebar()}>
+             <div id='logoTextBoxSidebar' onClick={() => this.props.flipFooter(true)}>
              <h3 id='profileSegment' style={{verticalAlign: 'middle', display: 'table-cell'}}> LN </h3>
              </div>
             </div>
@@ -155,7 +157,7 @@ class SidebarNav extends React.Component {
       } else if (this.state.notFound) {
         return <NotFound />;
       } else {
-        return <h1>Loading ... </h1>;
+        return <Icon name='spinner' loading color='black' size='huge' style={{position: 'absolute', top:'50%', left: '50%', marginLeft: '-2.5%', marginTop: '-2.5%'}}/>;
       }
       
     }
