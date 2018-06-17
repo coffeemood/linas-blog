@@ -19,7 +19,7 @@ import NotFound from './NotFound';
 import './App.css';
 import './icons.css';
 import './Fonts.css';
-import { Grid } from 'semantic-ui-react'
+import { Grid, Icon } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css';
 
 
@@ -35,29 +35,6 @@ const App = (props) => {
     let flipShowSidebar = (show) => {
         props.fetchShowSidebar(show)
     }
-    
-    
-    /*
-    <div class="one wide column">
-        <div id='footerbar' style={{
-                          backgroundColor: "#000000",
-                          paddingTop: '16px',
-                          paddingBottom: '16px',
-                          color: "#CDA435",
-                          borderRadius: "35px 35px 0px 0px",    
-                          border: '0px solid #000000',
-                          position: 'fixed',
-                          bottom: '0',
-                          left: '0',
-                          width: '45px',
-                          zIndex: '10',
-                          height: '100vh'
-                  }}>
-                  
-                 <div id="logoTextBoxSidebar"><h3 id='profileSegment' style={{verticalAlign: 'middle', display: 'table-cell'}}> LN </h3></div>
-                 
-          </div>
-        </div>*/
     
 return (
    

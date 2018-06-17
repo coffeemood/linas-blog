@@ -4,66 +4,47 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import SidebarNav from './Sidebar';
 import NotFound from '../NotFound';
-import PrismicReact from 'prismic-reactjs';
+import { PrismicReact, RichText } from 'prismic-reactjs';
 import { Image, Card, Grid, Divider, Segment, Icon } from 'semantic-ui-react';
 import ScrollToTop from 'react-scroll-up';
 import { flatten, times } from 'lodash';
 import { Link } from 'react-router-dom'
 import moment from 'moment';
+import Masonry from 'react-masonry-component'
+import Lorem from 'react-lorem-component'
 //import 'semantic-ui-css/semantic.min.css';
 
 // Declare your component
 export default class Posts extends React.Component {
 
   state = {
-    homepage: null,
+    life: null,
     notFound: false,
   }
 
   componentWillMount() {
-    this.fetchSinglePage(this.props);
+    this.fetchPosts(this.props);
     this.flipSidebar = this.flipSidebar.bind(this);
     this.flipFooter = this.flipFooter.bind(this);
-    this.scrollToTop = this.scrollToTop.bind(this);
-    this.state = { width: 0, height: 0 };
-    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
-  componentDidMount() {
-    this.updateWindowDimensions();
-    window.addEventListener('resize', this.updateWindowDimensions);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateWindowDimensions);
-  }
-  
-  updateWindowDimensions() {
-    this.setState({ width: window.innerWidth, height: window.innerHeight });
-  }
-  
   componentWillReceiveProps(props) {
-    this.fetchSinglePage(props);
+    this.fetchPosts(props);
   }
 
   componentDidUpdate() {
 //    this.props.prismicCtx.toolbar();
   }
 
-  scrollToTop = (event) => { 
-      const mainDiv = ReactDOM.findDOMNode(this.refs.topNode)
-      console.log(this.refs)
-      window.scrollTo(0, mainDiv.offsetTop);
-  
-  }
-
-  fetchSinglePage(props) {
+  fetchPosts(props) {
     if (props.prismicCtx) {
       // We are using the function to get a document by its uid
-      return props.prismicCtx.api.getSingle('linas-home').then((doc) => {
+      return props.prismicCtx.api.query(
+                props.prismicCtx.Predicates.at('document.type', 'linas-posts'),
+            ).then((doc) => {
         if (doc) {
           // We put the retrieved content in the state as a doc variable
-          this.setState({ homepage: doc });
+          this.setState({ life: doc.results });
         } else {
           // We changed the state to display error not found if no matched doc
           this.setState({ notFound: !doc });
@@ -103,6 +84,27 @@ export default class Posts extends React.Component {
               return ( <h3 id='mainPageSectionIndicator'> My Colourful Life </h3> )
       }
   }
+  
+  renderPosts = (posts) => {
+      
+      let content = []
+      let count = 0
+      for (var post of posts){
+          let data = post.data
+          let title = RichText.asText(data['post-title'])
+          let subtitle = RichText.asText(data['post-subtitle'])
+          let uid = post.uid
+          let image = data['post-cover'].url
+          content.push(<Link to={`/page/${uid}`}><Card
+                        header={title}
+                        image={image}
+                        description={subtitle}
+                        id='blogCard'
+                    /></Link>)
+          count += 1 
+          if (count == posts.length) return content
+      }
+  }
 
   render() {
     // We will fill in this section in Step 3...
@@ -113,7 +115,9 @@ export default class Posts extends React.Component {
      let mainPageTitle = this.renderMainPageTitle()
      let detailedCss = this.props.showSidebar ? 'detailedSegment' : 'detailedSegment-fullscreen' 
      
-     if (this.state.homepage) {
+     if (this.state.life) {
+         
+         let content3 = this.renderPosts(this.state.life)
          
          let content = flatten(times(45, (index) => 
              (  
@@ -148,7 +152,7 @@ export default class Posts extends React.Component {
                         image={require('../img/img1615.jpg')}
                         description='Elliot is a sound engineer living in Nashville who enjoys playing guitar and hanging with his cat'
                         id='blogCard'
-                                             /></Link>
+                        /></Link>
                   </Grid.Column>
               </Grid.Row>
               <Grid.Row>
@@ -188,6 +192,59 @@ export default class Posts extends React.Component {
               )
          ))
          
+          let images = ['/images/adult-attractive-beautiful-415829.jpg',
+  '/images/adult-beautiful-casual-372042.jpg',
+  '/images/adult-blur-fashion-445109.jpg',
+  '/images/book1.jpg',
+  '/images/book2.jpg',
+  '/images/book3.jpg',
+  '/images/book4.jpg',
+  '/images/book6.jpg',
+  '/images/boy-brother-child-35188.jpg',
+  '/images/child-girl-little-36483.jpg',
+  '/images/cream_pixels.png',
+  '/images/egg_shell.png',
+  '/images/img1612.jpg',
+  '/images/img1613.jpg',
+  '/images/img1614.jpg',
+  '/images/img1615.jpg',
+  '/images/img1616.jpg',
+  '/images/img1617.jpg',
+  '/images/img1618.jpg',
+  '/images/img1619.jpg',
+  '/images/img1620.jpg',
+  '/images/img1621.jpg',
+  '/images/img1622.jpg',
+  '/images/img1623.jpg',
+  '/images/img1624.jpg',
+  '/images/linedpaper.png',
+  '/images/location1.jpg',
+  '/images/location2.jpg',
+  '/images/location3.jpg',
+  '/images/location4.jpg',
+  '/images/pexels-photo-428338.jpg',
+  '/images/pexels-photo-933964.jpg' ]
+         
+         
+         let content2 = images.map(image => 
+                                   {
+             
+             let lorem = <Lorem count='1' sentenceUpperBound='1' format='plain text'/>
+                
+             return (   <Link to='/page/1'><Card
+                        href='#card-example-link-card'
+                        header='A Sample Blog Post'
+                        meta='Friend'
+                        image={image}
+                        description={lorem}
+                        id='blogCard'
+                    /></Link>
+              )
+             
+         })
+            
+         
+         
 //         console.log(content)
          
 //         <div id="mainProfile">
@@ -207,8 +264,9 @@ export default class Posts extends React.Component {
             <br></br>
             
             <div color='orange' id={detailedCss}>
-             
-              {content.map(c => c)}
+             <Masonry id='masonry'>
+              {content3.map(c => c)}
+               </Masonry>
                 
             </div>
           </div>

@@ -16,6 +16,7 @@
     "react-addons-css-transition-group": "^15.6.2",
     "react-animations": "^1.0.0",
     "react-dom": "^16.2.0",
+    "react-lorem-component": "^0.13.0",
     "react-mason": "^1.1.2",
     "react-masonry-component": "^6.2.0",
     "react-router-dom": "~4.2.2",

@@ -33,7 +33,7 @@ class Footer extends React.Component {
     
     return (<Modal id='footerDimmer' basic open={this.state.footer} onClose={() => { this.props.flipFooter(false) }} style={{width: '100vw', height: '100vh', justifyContent: 'center'}}>
            
-           <Modal.Content style={{marginTop: '50px'}}>
+           <Modal.Content style={{marginTop: '150px'}}>
              <h1 style={{textAlign: 'center', fontSize: '55px', color: '#CDA435', fontStyle: 'bold', letterSpacing: '1.44px'}}> Linas's Blog </h1>
              <h3 style={{textAlign: 'center', fontSize: '28px', color: '#CDA435', fontWeight: '300'}}> Journals - Travels - Poems - Books - Nonchalant Rants ... </h3>
              <p style={{fontStyle: 'italic', fontSize: '16px',  color: '#CDA435', fontWeight: '250', textAlign: 'center'}}>

@@ -136,7 +136,6 @@ class SidebarNav extends React.Component {
              <h3 id='profileSegment'> Menu </h3>
              <hr id='sidebarHori'></hr>
              <div class="menubarItemGrid">
-                  <Link to='/page/1'><a class="item"><Icon name='home'/>{sidebar.data.category1[0].text}</a></Link>
                   <Link to='/posts'><a class="item"><Icon name='pencil'/>{sidebar.data.category2[0].text}</a></Link>
                   <Link to='/books'><a class="item"><Icon name='book'/>{sidebar.data.category3[0].text}</a></Link>
                   <Link to='/trips'><a class="item"><Icon name='paw'/>{sidebar.data.category4[0].text}</a></Link>

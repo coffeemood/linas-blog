@@ -9,7 +9,7 @@ import { Image, Card, Grid, Divider, Segment } from 'semantic-ui-react';
 import { flatten, times } from 'lodash';
 import { Link } from 'react-router-dom'
 import moment from 'moment';
-import Masonry from 'react-mason';
+import Masonry from 'react-masonry-component';
 import BookCard from './BookCard';
 import fs from 'fs';
 //import 'semantic-ui-css/semantic.min.css';
@@ -131,31 +131,16 @@ export default class Poems extends React.Component {
   '/images/pexels-photo-933964.jpg' ]
          
          let content = images.map((img) => {
-             if (this.props.showSidebar){
             return (  
-              <div id='poemMotherDiv' style={{maxWidth: '300px', maxHeight: '750px', float: 'none', margin: 'auto', paddingLeft: '60px'}}>
+              <Link to='/page/1'><div id='poemMotherDiv' style={{maxWidth: '300px', maxHeight: '750px', float: 'none', margin: 'auto' }}>
                   <img src={img} style={{maxWidth: '100%', maxHeight: '100%'}}/>
                   <div id='poemTextContainer'>
                     <div id='poemLabel'> The Poet </div>
                 </div>
-              </div>
-              )} else {
-                return (  
-              <div id='poemMotherDiv' style={{maxWidth: '300px', maxHeight: '750px', float: 'none', margin: 'auto'}}>
-                  <img src={img} style={{maxWidth: '100%', maxHeight: '100%'}}/>
-                  <div id='poemTextContainer'>
-                    <div id='poemLabel'> The Poet </div>
-                </div>
-              </div>
-              )
-            }
-         })   
-         
-         
-         let content2 = flatten(times(45, (index) => 
-             (  
-              <div> COMING SOON </div>
-              )))
+                    </div></Link>
+              ) 
+            })
+            
          
         return (
           <div id='mainPage' ref='topNode'>
@@ -166,8 +151,9 @@ export default class Poems extends React.Component {
             <br></br>
             
             <div color='orange' id={detailedCss}>
-             
-              { content2 }
+              <Masonry id='masonry'>
+              { content }
+               </Masonry>
                 
             </div>
           </div>
@@ -175,6 +161,6 @@ export default class Poems extends React.Component {
       } else if (this.state.notFound) {
         return <NotFound />;
       }
-      return <h1>Loading ... </h1>;
+      return <h1> Loading ... </h1>;
     }
   }

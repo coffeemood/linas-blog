@@ -135,6 +135,8 @@ export default class Page extends React.Component {
                     <hr id='mainPageHori' size="6"></hr>
 
                     {content.map(c => c)}
+                    
+                    <hr></hr>
 
                 </div>
               </div>
