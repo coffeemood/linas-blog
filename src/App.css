@@ -30,6 +30,10 @@ html, body{
 
 
 
+.ui.page.dimmer {
+    animation: .5s ease-in-out 0s 1 fadeIn;
+}
+
 
 .App {
   text-align: center;
@@ -329,7 +333,7 @@ ul.soc > li:hover a {
 #menubarGrid {
     height: 100vh !important ; 
     position: relative;
-    animation: 0.3s ease-in-out 0s 1 rollIn;
+    animation: 0.3s ease-in-out 0s 1 fadeIn;
 /*    transition: width ease-in 0.1s, height ease-in 0.1s; */
     
 }
@@ -374,12 +378,19 @@ ul.soc > li:hover a {
     padding-top: 16px;
     padding-bottom: 16px;
     color: #CDA435;
+    position: fixed;
+    top: 0;
+    width: 25%;
+    z-index: 10;
+    border-bottom: 5px solid #CDA435;
     
     /* Border Radius */ 
+/*
     border-radius: 0px 0px 35px 35px;
     -moz-border-radius: 0px 0px 35px 35px;
     -webkit-border-radius: 0px 0px 35px 35px;
     border: 0px solid #000000;
+*/
     
 }
 
@@ -391,7 +402,7 @@ ul.soc > li:hover a {
 
 #menubarImgGrid {
     margin-bottom: 40px; 
-    margin-top: 25px; 
+    margin-top: 115px; 
 }
 
 #sidebarImg {
@@ -431,16 +442,23 @@ ul.soc > li:hover a {
     padding-bottom: 26px;
     width: 100%;
     background-color: black;
+    border-bottom: 5px solid #CDA435; 
+    position: fixed;
+    top: 0;
+    left: 25%;
+    z-index: 10;
     
     /* Border Radius */ 
+/*
     border-radius: 0px 0px 30px 30px;
     -moz-border-radius: 0px 0px 30px 30px;
     -webkit-border-radius: 0px 0px 30px 30px;
     border: 0px solid #000000;
+*/
 }
 
 #mainPageSectionIndicator {
-    margin-left: -2.5%;
+    margin-left: -26%;
     color: #CDA435;
     font-family: 'Open Sans' !important;
     text-transform: uppercase;
@@ -512,9 +530,8 @@ ul.soc > li:hover a {
 }
 
 
-
 #mainContentGrid {
-  transition: width ease-in 0.2s, height ease-in 0.2s; 
+/*  transition: width ease-in 0.2s, height ease-in 0.2s; */
 /*  background-image: linear-gradient(to right, #F7F1E3, #EFE2C3);*/
 }
 
@@ -533,10 +550,11 @@ div#root, #motherGrid {
 #mainPage {
     
     margin-bottom: 10px;
-    animation: 0.5s ease-in-out 0s 1 fadeInRight;
-    transition: all 0.5s linear;
+    animation: .5s ease-in-out 0s 1 fadeIn;
+/*    transition: all 0.5s linear;*/
     
-    background-image: linear-gradient(to right, #F7F1E3, #EFE2C3)
+    background-image: linear-gradient(to right, #F7F1E3, #EFE2C3);
+    padding-bottom: 100vh;
         
     
 }
@@ -576,10 +594,11 @@ div#root, #motherGrid {
 
 #detailedSegment {
     
-    margin-top: 100px;
+    margin-top: 70px;
     margin-left: 25px;
     margin-right: 25px;
-    margin-bottom: 35px; 
+    margin-bottom: 35px;
+    padding-top: 4.5rem;
     padding-left: 70px;
     padding-right: 50px;
     
