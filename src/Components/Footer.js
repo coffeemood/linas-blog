@@ -34,9 +34,9 @@ class Footer extends React.Component {
     return (<Modal id='footerDimmer' basic open={this.state.footer} onClose={() => { this.props.flipFooter(false) }} style={{width: '100vw', height: '100vh', justifyContent: 'center'}}>
            
            <Modal.Content style={{marginTop: '150px'}}>
-             <h1 style={{textAlign: 'center', fontSize: '55px', color: '#CDA435', fontStyle: 'bold', letterSpacing: '1.44px'}}> Linas's Blog </h1>
-             <h3 style={{textAlign: 'center', fontSize: '28px', color: '#CDA435', fontWeight: '300'}}> Journals - Travels - Poems - Books - Nonchalant Rants ... </h3>
-             <p style={{fontStyle: 'italic', fontSize: '16px',  color: '#CDA435', fontWeight: '250', textAlign: 'center'}}>
+             <h1> Linas's Blog </h1>
+             <h3> Journals - Travels - Poems - Books - Nonchalant Rants ... </h3>
+             <p>
                 <br></br>
                 Welcome to my blog. Here you will find a collection of posts taken from my personal diary, travel journal entries, book recommendations as well as all my poems. 
                 <br></br>
@@ -65,10 +65,9 @@ class Footer extends React.Component {
                 </Grid.Column>
                  <Grid.Column style={{display: 'inherit', marginLeft: '-10px'}}>
                     <ul class="soc" style={{margin: '0 auto', paddingTop: '10px'}}>
-                        <li><a class="soc-twitter" href="#" id='iconFooter'></a></li>
-                        <li><a class="soc-facebook" href="#" id='iconFooter'></a></li>
-                        <li><a class="soc-linkedin" href="#" id='iconFooter'></a></li>
-                        <li><a class="soc-instagram soc-icon-last" href="#" id='iconFooter'></a></li>
+                        <li><a class="soc-facebook"  target="_blank" href="https://www.facebook.com/do.hoang.linh.nga" id='iconFooter'></a></li>
+                        <li><a class="soc-linkedin"  target="_blank" href="https://www.linkedin.com/in/do-hoang-linh-nga-a8b745101/" id='iconFooter'></a></li>
+                        <li><a class="soc-instagram soc-icon-last"  target="_blank" href="https://www.instagram.com/linh.nga1703/" id='iconFooter'></a></li>
                     </ul>
                 </Grid.Column>
                  <Grid.Column style={{display: 'inherit'}}>

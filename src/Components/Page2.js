@@ -2,6 +2,7 @@
 
 import React from 'react';
 import SidebarNav from './Sidebar';
+import { BulletList } from 'react-content-loader';
 import NotFound from '../NotFound';
 import {PrismicReact, Link, RichText, Date} from 'prismic-reactjs';
 import { Image, Segment, Grid, Icon, Modal } from 'semantic-ui-react';
@@ -38,12 +39,10 @@ export default class Page extends React.Component {
   fetchSinglePage(props) {
     if (props.prismicCtx && props.match.params) {
       // We are using the function to get a document by its uid
-      return props.prismicCtx.api.getByUID('linas-posts', props.match.params.uid).then((doc) => {
+      return props.prismicCtx.api.getByUID('linas-posts', props.match.params.uid).then(doc => {
         if (doc) {
-          // We put the retrieved content in the state as a doc variable
           this.setState({ content: doc.data, doc: doc });
         } else {
-          // We changed the state to display error not found if no matched doc
           this.setState({ notFound: !doc });
         }
       });
@@ -72,8 +71,8 @@ export default class Page extends React.Component {
                    { RichText.render(this.state.content['post-author']) } 
                </h5>
                
-               <h5 style={{textAlign: 'center', fontSize: '12px', fontStyle: 'italic',letterSpacing: '1px', color: "#B2B4B5", marginBottom: '15px'}}>
-                   { moment.utc(content['post-published']).format('MMMM DD, YYYY @ HH:mm') } 
+               <h5 style={{textAlign: 'center', fontSize: '14px', fontStyle: 'italic',letterSpacing: '1px', color: "#B2B4B5", marginBottom: '15px'}}>
+                   { content['post-published'] ? moment.utc(content['post-published']).format('DD/MM/YYYY HH:mm') : '' } 
                </h5>
 
               </div>)
@@ -106,7 +105,7 @@ export default class Page extends React.Component {
          
         return (
           
-        <Modal size='fullscreen' open={this.state.open} onClose={this.closeContent}>
+        <Modal size='large' dimmer='inverted' open={this.state.open} onClose={this.closeContent}>
           <Modal.Header> 
               {headerInfo} 
           </Modal.Header>
@@ -114,12 +113,10 @@ export default class Page extends React.Component {
            
             <div id="mainPageImgDiv"> 
                     <Image src={ this.state.content['post-cover'].url } size='massive' id='imageDiv'/>
-                    <h5 style={{textAlign: 'center'}}>Source: Anonymous</h5>
+                    <br></br>
             </div>
-            <br></br>
-                { RichText.render(this.state.content['post-body']) }
-            <hr></hr>
-            
+            <br></br>{ RichText.render(this.state.content['post-body']) } <br></br><br></br><hr></hr><br></br><br></br>
+    
           </Modal.Content>
         </Modal>
 
@@ -128,7 +125,7 @@ export default class Page extends React.Component {
       } else if (this.state.notFound) {
         return <NotFound />;
       }
-      return <Icon name='spinner' loading color='black' size='huge' style={{position: 'absolute', top:'50%', left: '50%', marginLeft: '-2.5%', marginTop: '-2.5%'}}/>
+      return <BulletList animate="true" width="600" height="600" />;
     }
 }
 

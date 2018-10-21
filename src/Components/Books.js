@@ -23,7 +23,6 @@ export default class Books extends React.Component {
 
   componentWillMount() {
     this.fetchSinglePage(this.props);
-    this.flipSidebar = this.flipSidebar.bind(this);
     this.renderLogo = this.renderLogo.bind(this);
     this.scrollToTop = this.scrollToTop.bind(this);
   }
@@ -59,11 +58,6 @@ export default class Books extends React.Component {
     return null;
   }
 
-  flipSidebar = () => {
-      let show = this.props.showSidebar 
-      show = !show
-      this.props.flipSidebar(show)
-  }
   
   renderLogo = () => {
       return(<div class="three wide column" style={{float: 'left'}}>
@@ -73,26 +67,10 @@ export default class Books extends React.Component {
         </div>)
   }
   
-  renderMainPageTitle = () => {
-      let logo = this.renderLogo(); 
-      if (!this.props.showSidebar){
-          return (
-            <div class="ui full grid" verticalAlign='bottom'>
-                { logo }
-                <div class="thirteen wide column" id='sectionTitleDivNoSideBar'>
-                 <h3 id='mainPageSectionIndicator'> My Books </h3>
-                </div>
-             </div>
-          ) } else {
-              return ( <h3 id='mainPageSectionIndicator'> My Books </h3> )
-      }
-  }
+  renderMainPageTitle = () => <h3 id='mainPageSectionIndicator'> My Books </h3> 
 
   render() {
-    // We will fill in this section in Step 3...
-      
-//      <div class="ui cube shape" id="imageDiv"><Image src={require('../img/adult-beautiful-casual-372042.jpg')} size='medium' id='profileImage'/></div>
-      
+   
      const { contextRef } = this.state
      let mainPageTitle = this.renderMainPageTitle()
       

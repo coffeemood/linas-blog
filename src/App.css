@@ -75,7 +75,7 @@ ul.soc > li:hover a {
 }
 
 #masonry { 
-    margin-left: 70px
+    margin-left: 70px;
 }
 
 @media only screen and (max-width: 1480px) {
@@ -394,6 +394,7 @@ ul.soc > li:hover a {
     
 }
 
+
 #menubarTitle h3 {
     font-family: 'Grand Hotel', cursive;
     font-size: 26px;
@@ -442,23 +443,25 @@ ul.soc > li:hover a {
     padding-bottom: 26px;
     width: 100%;
     background-color: black;
-    border-bottom: 5px solid #CDA435; 
+    /* border-bottom: 5px solid #CDA435;  */
     position: fixed;
     top: 0;
     left: 25%;
-    z-index: 10;
+    z-index: 200;
+    overflow: hidden 
     
-    /* Border Radius */ 
-/*
-    border-radius: 0px 0px 30px 30px;
-    -moz-border-radius: 0px 0px 30px 30px;
-    -webkit-border-radius: 0px 0px 30px 30px;
-    border: 0px solid #000000;
-*/
 }
 
+#mainPageSectionIndicatorDiv:hover {
+    background-color: #CDA435;    
+    cursor: pointer;
+}
+#mainPageSectionIndicatorDiv:hover #mainPageSectionIndicator { color: black; }
+
+
 #mainPageSectionIndicator {
-    margin-left: -26%;
+    max-width: 100%;
+    margin-left: -11%;
     color: #CDA435;
     font-family: 'Open Sans' !important;
     text-transform: uppercase;
@@ -474,6 +477,7 @@ ul.soc > li:hover a {
     font-size: 15px; 
     display: inline-block;
     letter-spacing: 0.4px;
+    border-radius: 13px;
     -webkit-border-radius: 13px;
     -moz-border-radius: 13px;
 }
@@ -587,9 +591,10 @@ div#root, #motherGrid {
 
 #imageDiv {
     
-    width: 100%;
+    width: 85%;
+    left: 50%;
+    transform: translate(-50%,0);
     border: 0px solid #000000;
-    
 }
 
 #detailedSegment {
@@ -634,21 +639,22 @@ div#root, #motherGrid {
 #mainPageImgDiv {
     max-width: 100%;
     max-height: 70%;
-    padding-top: 50px;
+    padding-top: 35px;
+    padding-bottom: 15px;
     margin: 0 auto;
 }
 
 
 #postHeader1, #postHeader1 > div, #postHeader1 > div > *  {
     text-align: center;
-    font-size: 36px;
+    font-size: 32px;
 }
 
 #postHeader5, #postHeader5 > div > * { 
     text-align: center;
     font-size: 14px;
     letter-spacing: 1px;
-    margin-bottom: -20px 
+    margin-bottom: -20px;
 }
 
 #blogSegment {
@@ -677,11 +683,11 @@ div#root, #motherGrid {
 }
 
 div#blogSegment > h1, div#blogSegment > h2, div#blogSegment > h3, div#blogSegment > h4 {
-    font-family: "Open Sans";
+    font-family: "Mali";
 }
 
 div#blogSegment > p, div#blogSegment > div > *,  div#blogSegment > div > * > *  {
-    font-family: "Crimson Text", serif !important; 
+    font-family: "Mali" !important; 
     font-size: 19px !important ; 
     line-height: 1.59 !important;
     max-width: 100%;
@@ -748,6 +754,32 @@ div#blogSegment > p, div#blogSegment > div > *,  div#blogSegment > div > * > *  
     margin-top: -5px;
 }
 
+#footerDimmer, #footerDimmer > .content > * {
+    font-family: 'Mali' !important;
+}
+
+#footerDimmer > .content > h1 {
+    text-align: center;
+    font-size: 55px;
+    color: #CDA435;
+    font-style: bold;
+    letter-spacing: 1.44px;
+}
+
+#footerDimmer > .content > h3 {
+    text-align: center;
+    font-size: 28px;
+    color: #CDA435;
+    font-weight: 300;
+}
+
+#footerDimmer > .content > p {
+    font-style: italic;
+    font-size: 16px;
+    color: #CDA435;
+    font-weight: 250;
+    text-align: center;
+}
 
 #logoFooter {
 /*    border: 1px double black;*/
@@ -781,18 +813,8 @@ div#blogSegment > p, div#blogSegment > div > *,  div#blogSegment > div > * > *  
     display: table;
 }
 
-#logoTextBoxNoSidebar {
-    border: 1px double #CDA435;
-    width: 45px;
-    height: 45px;
-    margin-top: -7px;
-    left: 2.5%;
-    display: table;
-    background-color: black;
-    position: fixed;
-}
 
-#logoTextBoxSidebar:hover, #logoTextBoxNoSidebar:hover, #logoText:hover {
+#logoTextBoxSidebar:hover, #logoTextBoxSidebar > #logoText:hover {
     background-color: #CDA435;    
     color: black;
     cursor: pointer;
@@ -806,10 +828,14 @@ div#blogSegment > p, div#blogSegment > div > *,  div#blogSegment > div > * > *  
     font-family: 'Grand Hotel', cursive;
     font-size: 26px;
     letter-spacing: 1.5px;
+    z-index: 500;
 }
 
 
-
+div.ui.page.modals.dimmer.transition.visible.active > div > div.header { 
+    border-bottom: 0;
+    /* background-color: #212733; */
+}
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

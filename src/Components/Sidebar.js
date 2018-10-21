@@ -2,6 +2,7 @@
 
 import React from 'react';
 import NotFound from '../NotFound';
+import { BulletList } from 'react-content-loader';
 import PrismicReact from 'prismic-reactjs';
 import { Sidebar, Segment, Menu, Icon, Image, List, Button, Divider } from "semantic-ui-react"
 import { Link } from 'react-router-dom'
@@ -18,7 +19,6 @@ class SidebarNav extends React.Component {
 
   componentWillMount() {
     this.fetchSinglePage(this.props);
-    this.flipSidebar = this.flipSidebar.bind(this);
   }
 
   componentWillReceiveProps(props) {
@@ -41,20 +41,12 @@ class SidebarNav extends React.Component {
     return null;
   }
 
-  flipSidebar = () => {
-      let show = this.props.showSidebar 
-      show = !show
-      this.props.flipSidebar(show)
-  }
-  
-
   rendermediaBar = () => { return (
       
     <ul class="soc" style={{marginTop: '20px'}}>
-        <li><a class="soc-twitter" href="#"></a></li>
-        <li><a class="soc-facebook" href="#"></a></li>
-        <li><a class="soc-linkedin" href="#"></a></li>
-        <li><a class="soc-instagram soc-icon-last" href="#"></a></li>
+        <li><a class="soc-facebook"  target="_blank" href="https://www.facebook.com/do.hoang.linh.nga"></a></li>
+        <li><a class="soc-linkedin"  target="_blank" href="https://www.linkedin.com/in/do-hoang-linh-nga-a8b745101/"></a></li>
+        <li><a class="soc-instagram soc-icon-last"  target="_blank" href="https://www.instagram.com/linh.nga1703/"></a></li>
     </ul>
             
       )}
@@ -126,11 +118,11 @@ class SidebarNav extends React.Component {
           <div class="ui huge left vertical menu" id='menubar'>
             <div id='menubarTitle'>
              <div id='logoTextBoxSidebar' onClick={() => this.props.flipFooter(true)}>
-             <h3 id='profileSegment' style={{verticalAlign: 'middle', display: 'table-cell'}}> LN </h3>
+             <h3 id='logoText' style={{verticalAlign: 'middle', display: 'table-cell'}}> LN </h3>
              </div>
             </div>
              <div id="menubarImgGrid"> 
-                 <Image src={require('../img/pexels-photo-428338.jpg')} size='medium' circular id='sidebarImg'/>
+                 <Image src={require('../img/profile.jpg')} size='medium' circular id='sidebarImg'/>
              </div>
 
              <h3 id='profileSegment'> Menu </h3>
@@ -156,7 +148,7 @@ class SidebarNav extends React.Component {
       } else if (this.state.notFound) {
         return <NotFound />;
       } else {
-        return <Icon name='spinner' loading color='black' size='huge' style={{position: 'absolute', top:'50%', left: '50%', marginLeft: '-2.5%', marginTop: '-2.5%'}}/>;
+      return <BulletList animate="true" width="600" height="600" />;
       }
       
     }

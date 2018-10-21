@@ -8,12 +8,10 @@ export default class PrismicApp extends React.Component {
 
   state = {
     prismicCtx: null,
-    showSidebar: true,
-    showFooter: true
+    showFooter: false
   }
 
   componentWillMount() {
-    this.fetchShowSidebar = this.fetchShowSidebar.bind(this)
     this.fetchShowFooter = this.fetchShowFooter.bind(this)
     this.buildContext().then((prismicCtx) => {
       this.setState({ prismicCtx });
@@ -28,12 +26,6 @@ export default class PrismicApp extends React.Component {
       window.PrismicToolbar.startExperiment(maybeCurrentExperiment.googleId());
     }
     window.PrismicToolbar.setup(PrismicConfig.apiEndpoint);
-  }
-
-  fetchShowSidebar = (show) => {
-      let cstate = this.state
-      cstate.showSidebar = show
-      this.setState(cstate)
   }
   
   fetchShowFooter = (show) => {
@@ -58,7 +50,7 @@ export default class PrismicApp extends React.Component {
 
   render() {
     return (
-        <App prismicCtx={this.state.prismicCtx} showSidebar={this.state.showSidebar} fetchShowSidebar={(show) => this.fetchShowSidebar(show)} showFooter={this.state.showFooter} fetchShowFooter={(show) => this.fetchShowFooter(show)} />
+        <App prismicCtx={this.state.prismicCtx} showFooter={this.state.showFooter} fetchShowFooter={(show) => this.fetchShowFooter(show)} />
     );
   }
 }

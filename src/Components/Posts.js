@@ -24,7 +24,6 @@ export default class Posts extends React.Component {
 
   componentWillMount() {
     this.fetchPosts(this.props);
-    this.flipSidebar = this.flipSidebar.bind(this);
     this.flipFooter = this.flipFooter.bind(this);
   }
 
@@ -54,36 +53,13 @@ export default class Posts extends React.Component {
     return null;
   }
 
-  flipSidebar = () => {
-      let show = this.props.showSidebar 
-      show = !show
-      this.props.flipSidebar(show)
-  }
-  
   flipFooter = () => {
       let show = this.props.showFooter
       show = !show
       this.props.flipFooter(show)
   }
   
-  renderMainPageTitle = () => {
-      
-      if (!this.props.showSidebar){
-          return (
-            <div class="ui full grid" verticalAlign='bottom'>
-               <div class="three wide column" style={{float: 'left'}}>
-                <div id='logoTextBoxNoSidebar' onClick={() => this.flipSidebar()}>
-                     <h3 id='logoText'> LN </h3>
-                 </div> 
-               </div> 
-                <div class="thirteen wide column" id='sectionTitleDivNoSideBar'>
-                 <h3 id='mainPageSectionIndicator'> My Colourful Life </h3>
-                </div>
-             </div>
-          ) } else {
-              return ( <h3 id='mainPageSectionIndicator'> My Colourful Life </h3> )
-      }
-  }
+  renderMainPageTitle = () => <h3 id='mainPageSectionIndicator'> My Colourful Life </h3> 
   
   renderPosts = (posts) => {
       
@@ -100,6 +76,7 @@ export default class Posts extends React.Component {
                         image={image}
                         description={subtitle}
                         id='blogCard'
+                        className='hvr-grow'
                     /></Link>)
           count += 1 
           if (count == posts.length) return content
@@ -113,147 +90,11 @@ export default class Posts extends React.Component {
       
      const { contextRef } = this.state
      let mainPageTitle = this.renderMainPageTitle()
-     let detailedCss = this.props.showSidebar ? 'detailedSegment' : 'detailedSegment-fullscreen' 
+     let detailedCss = 'detailedSegment' 
      
      if (this.state.life) {
          
-         let content3 = this.renderPosts(this.state.life)
-         
-         let content = flatten(times(45, (index) => 
-             (  
-              <Grid stackable columns={3} style={{marginTop: '40px'}}>
-              <Grid.Row>
-                  <Grid.Column>
-                      <Card
-                        href='#card-example-link-card'
-                        header='A Sample Blog Post'
-                        meta='Friend'
-                        image={require('../img/img1621.jpg')}
-                        description='Elliot is a sound engineer living in Nashville who enjoys playing guitar and hanging with his cat'
-                        id='blogCard'
-                      />
-                      </Grid.Column>
-
-                  <Grid.Column>
-                      <Card
-                        href='#card-example-link-card'
-                        header='A Sample Blog Post'
-                        meta='Friend'
-                        image={require('../img/img1613.jpg')}
-                        description='Elliot is a sound engineer living in Nashville who enjoys playing guitar and hanging with his cat'
-                        id='blogCard'
-                      />
-                      </Grid.Column>
-                  <Grid.Column>
-                      <Link to='/page/1'><Card
-                        href='#card-example-link-card'
-                        header='A Sample Blog Post'
-                        meta='Friend'
-                        image={require('../img/img1615.jpg')}
-                        description='Elliot is a sound engineer living in Nashville who enjoys playing guitar and hanging with his cat'
-                        id='blogCard'
-                        /></Link>
-                  </Grid.Column>
-              </Grid.Row>
-              <Grid.Row>
-                  <Grid.Column>
-                      <Card
-                        href='#card-example-link-card'
-                        header='A Sample Blog Post'
-                        meta='Friend'
-                        image={require('../img/img1614.jpg')}
-                        description='Elliot is a sound engineer living in Nashville who enjoys playing guitar and hanging with his cat'
-                        id='blogCard'
-                      />
-                      </Grid.Column>
-
-                  <Grid.Column>
-                      <Card
-                        href='#card-example-link-card'
-                        header='A Sample Blog Post'
-                        meta='Friend'
-                        image={require('../img/img1618.jpg')}
-                        description='Elliot is a sound engineer living in Nashville who enjoys playing guitar and hanging with his cat'
-                        id='blogCard'
-                      />
-                      </Grid.Column>
-                  <Grid.Column>
-                      <Link to='/page/1'><Card
-                        href='#card-example-link-card'
-                        header='A Sample Blog Post'
-                        meta='Friend'
-                        image={require('../img/img1622.jpg')}
-                        description='Elliot is a sound engineer living in Nashville who enjoys playing guitar and hanging with his cat'
-                        id='blogCard'
-                                             /></Link>
-                  </Grid.Column>
-              </Grid.Row>
-             </Grid>
-              )
-         ))
-         
-          let images = ['/images/adult-attractive-beautiful-415829.jpg',
-  '/images/adult-beautiful-casual-372042.jpg',
-  '/images/adult-blur-fashion-445109.jpg',
-  '/images/book1.jpg',
-  '/images/book2.jpg',
-  '/images/book3.jpg',
-  '/images/book4.jpg',
-  '/images/book6.jpg',
-  '/images/boy-brother-child-35188.jpg',
-  '/images/child-girl-little-36483.jpg',
-  '/images/cream_pixels.png',
-  '/images/egg_shell.png',
-  '/images/img1612.jpg',
-  '/images/img1613.jpg',
-  '/images/img1614.jpg',
-  '/images/img1615.jpg',
-  '/images/img1616.jpg',
-  '/images/img1617.jpg',
-  '/images/img1618.jpg',
-  '/images/img1619.jpg',
-  '/images/img1620.jpg',
-  '/images/img1621.jpg',
-  '/images/img1622.jpg',
-  '/images/img1623.jpg',
-  '/images/img1624.jpg',
-  '/images/linedpaper.png',
-  '/images/location1.jpg',
-  '/images/location2.jpg',
-  '/images/location3.jpg',
-  '/images/location4.jpg',
-  '/images/pexels-photo-428338.jpg',
-  '/images/pexels-photo-933964.jpg' ]
-         
-         
-         let content2 = images.map(image => 
-                                   {
-             
-             let lorem = <Lorem count='1' sentenceUpperBound='1' format='plain text'/>
-                
-             return (   <Link to='/page/1'><Card
-                        href='#card-example-link-card'
-                        header='A Sample Blog Post'
-                        meta='Friend'
-                        image={image}
-                        description={lorem}
-                        id='blogCard'
-                    /></Link>
-              )
-             
-         })
-            
-         
-         
-//         console.log(content)
-         
-//         <div id="mainProfile">
-//                <Image src={require('../img/adult-beautiful-casual-372042.jpg')} size='large' id='imageDiv'/>
-//            </div>
-//            
-//            <h3>{this.state.homepage.data['homepage-subtitle'][0].text}</h3>
-//            
-            
+        let content = this.renderPosts(this.state.life)
          
         return (
           <div id='mainPage' ref='topNode'>
@@ -265,15 +106,15 @@ export default class Posts extends React.Component {
             
             <div color='orange' id={detailedCss}>
              <Masonry id='masonry'>
-              {content3.map(c => c)}
+              {content.map(c => c)}
                </Masonry>
-                
+
             </div>
           </div>
         );
       } else if (this.state.notFound) {
         return <NotFound />;
       }
-      return <Icon name='spinner' loading color='black' size='huge' style={{position: 'absolute', top:'50%', left: '50%', marginLeft: '-2.5%', marginTop: '-2.5%'}}/>;
+      return <div id='mainPage' ref='topNode'></div>
     }
   }

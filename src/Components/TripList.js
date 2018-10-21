@@ -23,7 +23,6 @@ export default class TripList extends React.Component {
 
   componentWillMount() {
     this.fetchSinglePage(this.props);
-    this.flipSidebar = this.flipSidebar.bind(this);
     this.renderLogo = this.renderLogo.bind(this);
     this.scrollToTop = this.scrollToTop.bind(this);
     this.renderCountry = this.renderCountry.bind(this);
@@ -67,12 +66,6 @@ export default class TripList extends React.Component {
     return null;
   }
 
-  flipSidebar = () => {
-      let show = this.props.showSidebar 
-      show = !show
-      this.props.flipSidebar(show)
-  }
-  
   renderLogo = () => {
       return(<div class="three wide column" style={{float: 'left'}}>
                 <div id='logoTextBoxNoSidebar' onClick={() => this.flipSidebar()}>
@@ -81,20 +74,8 @@ export default class TripList extends React.Component {
         </div>)
   }
   
-  renderMainPageTitle = () => {
-      let logo = this.renderLogo(); 
-      if (!this.props.showSidebar){
-          return (
-            <div class="ui full grid" verticalAlign='bottom'>
-                { logo }
-                <div class="thirteen wide column" id='sectionTitleDivNoSideBar'>
-                 <h3 id='mainPageSectionIndicator'> My Trips </h3>
-                </div>
-             </div>
-          ) } else {
-              return ( <h3 id='mainPageSectionIndicator'> My Trips </h3> )
-      }
-  }
+  renderMainPageTitle = () => <h3 id='mainPageSectionIndicator'> My Trips </h3> 
+    
   
   renderCountry = () => { 
       

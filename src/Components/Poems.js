@@ -27,20 +27,13 @@ export default class Poems extends React.Component {
 
   componentWillMount() {
     this.fetchSinglePage(this.props);
-    this.flipSidebar = this.flipSidebar.bind(this);
     this.state = { width: 0, height: 0 };
   }
   
   componentWillReceiveProps(props) {
     this.fetchSinglePage(props);
-    if (props.showSidebar){
-        this.setState({showSidebar: props.showSidebar})
-    }
   }
 
-  componentDidUpdate() {
-//    this.props.prismicCtx.toolbar();
-  }
 
   fetchSinglePage(props) {
     if (props.prismicCtx) {
@@ -61,38 +54,16 @@ export default class Poems extends React.Component {
   handleLayoutComplete() {
       console.log('hello')
   }
-    
-  flipSidebar = () => {
-      let show = this.props.showSidebar 
-      show = !show
-      this.props.flipSidebar(show)
-  }
+
   
-  renderMainPageTitle = () => {
-      
-      if (!this.props.showSidebar){
-          return (
-            <div class="ui full grid" verticalAlign='bottom'>
-               <div class="three wide column" style={{float: 'left'}}>
-                <div id='logoTextBoxNoSidebar' onClick={() => this.flipSidebar()}>
-                     <h3 id='logoText'> LN </h3>
-                 </div> 
-               </div> 
-                <div class="thirteen wide column" id='sectionTitleDivNoSideBar'>
-                 <h3 id='mainPageSectionIndicator'> My Poems </h3>
-                </div>
-             </div>
-          ) } else {
-              return ( <h3 id='mainPageSectionIndicator'> My Poems </h3> )
-      }
-  }
+  renderMainPageTitle = () => <h3 id='mainPageSectionIndicator'> My Poems </h3> 
 
   render() {
       
       
      const { contextRef } = this.state
      let mainPageTitle = this.renderMainPageTitle()
-     let detailedCss = this.props.showSidebar ? 'detailedSegment' : 'detailedSegment-fullscreen' 
+     let detailedCss = 'detailedSegment'
      
      if (this.state.homepage) {
          
