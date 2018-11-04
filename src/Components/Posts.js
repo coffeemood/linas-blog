@@ -38,9 +38,11 @@ export default class Posts extends React.Component {
   fetchPosts(props) {
     if (props.prismicCtx) {
       // We are using the function to get a document by its uid
-      return props.prismicCtx.api.query(
-                props.prismicCtx.Predicates.at('document.type', 'linas-posts'),
-            ).then((doc) => {
+      let query = [props.prismicCtx.Predicates.at('document.type', 'linas-posts'),
+                  props.prismicCtx.Predicates.at('my.linas-posts.post-type', 'life')
+      ]
+
+      return props.prismicCtx.api.query(query).then((doc) => {
         if (doc) {
           // We put the retrieved content in the state as a doc variable
           this.setState({ life: doc.results });

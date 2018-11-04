@@ -6,7 +6,6 @@ import NotFound from '../NotFound';
 import PrismicReact from 'prismic-reactjs';
 import { Image, Segment, Grid, Icon } from 'semantic-ui-react';
 import { flatten, times } from 'lodash';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; 
 import moment from 'moment';
 
 //import 'semantic-ui-css/semantic.min.css';

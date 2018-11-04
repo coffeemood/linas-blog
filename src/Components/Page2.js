@@ -7,7 +7,6 @@ import NotFound from '../NotFound';
 import {PrismicReact, Link, RichText, Date} from 'prismic-reactjs';
 import { Image, Segment, Grid, Icon, Modal } from 'semantic-ui-react';
 import { flatten, times } from 'lodash';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; 
 import moment from 'moment';
 
 //import 'semantic-ui-css/semantic.min.css';
@@ -41,7 +40,8 @@ export default class Page extends React.Component {
       // We are using the function to get a document by its uid
       return props.prismicCtx.api.getByUID('linas-posts', props.match.params.uid).then(doc => {
         if (doc) {
-          this.setState({ content: doc.data, doc: doc });
+          console.log(doc.data)
+          this.setState({ content: doc.data, doc: doc, type: doc.data['post-type'] });
         } else {
           this.setState({ notFound: !doc });
         }
@@ -49,15 +49,6 @@ export default class Page extends React.Component {
     }
     return null;
   }
-
-//return (
-//      <div class="ui full grid" verticalAlign='bottom' style={{marginTop: '10px', display: 'block'}}>
-//     
-//       <h1 style={{textAlign: 'center', fontSize: '36px'}}> Make your content shine by getting out of the way </h1> 
-//       <h5 style={{textAlign: 'center', fontSize: '14px', letterSpacing: '1px', marginBottom: '-20px' }}> Author: Lina </h5>
-//       <h5 style={{textAlign: 'center', fontSize: '12px', fontStyle: 'italic',letterSpacing: '1px', color: "#B2B4B5", marginBottom: '15px'}}>{moment().format('MMMM DD, YYYY @ HH:mm')}</h5>
-//        
-//      </div>)
 
   renderHeaderInfo = () => {
       if (this.state.content){
@@ -82,7 +73,19 @@ export default class Page extends React.Component {
   
   closeContent = () => { 
     this.setState({open: false})
-    this.props.history.goBack()
+    let place = ''
+    console.log(`Type is ${this.state.type} motherfucker`)
+    switch(this.state.type){
+      case 'book':
+        place = 'books';
+        break;
+      case 'life':
+        place = 'posts';
+        break;
+    }
+
+    this.props.history.push(`/${place}`)
+    
   }
   
   render() {

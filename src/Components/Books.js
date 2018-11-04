@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import SidebarNav from './Sidebar';
 import NotFound from '../NotFound';
-import PrismicReact from 'prismic-reactjs';
+import { PrismicReact, RichText } from 'prismic-reactjs';
 import { Image, Card, Grid, Divider, Segment } from 'semantic-ui-react';
 import ScrollToTop from 'react-scroll-up';
 import { flatten, times } from 'lodash';
@@ -22,13 +22,13 @@ export default class Books extends React.Component {
   }
 
   componentWillMount() {
-    this.fetchSinglePage(this.props);
+    this.fetchBooks(this.props);
     this.renderLogo = this.renderLogo.bind(this);
     this.scrollToTop = this.scrollToTop.bind(this);
   }
 
   componentWillReceiveProps(props) {
-    this.fetchSinglePage(props);
+    this.fetchBooks(props);
   }
 
   componentDidUpdate() {
@@ -37,18 +37,21 @@ export default class Books extends React.Component {
 
   scrollToTop = (event) => { 
       const mainDiv = ReactDOM.findDOMNode(this.refs.topNode)
-      console.log(this.refs)
       window.scrollTo(0, mainDiv.offsetTop);
   
   }
 
-  fetchSinglePage(props) {
+  fetchBooks(props){
     if (props.prismicCtx) {
       // We are using the function to get a document by its uid
-      return props.prismicCtx.api.getSingle('linas-home').then((doc) => {
+      let query = [props.prismicCtx.Predicates.at('document.type', 'linas-posts'),
+                  props.prismicCtx.Predicates.at('my.linas-posts.post-type', 'book')
+      ]
+
+      return props.prismicCtx.api.query(query).then((doc) => {
         if (doc) {
           // We put the retrieved content in the state as a doc variable
-          this.setState({ homepage: doc });
+          this.setState({ books: doc.results });
         } else {
           // We changed the state to display error not found if no matched doc
           this.setState({ notFound: !doc });
@@ -73,14 +76,19 @@ export default class Books extends React.Component {
    
      const { contextRef } = this.state
      let mainPageTitle = this.renderMainPageTitle()
+     
       
-     if (this.state.homepage) {
+     if (this.state.books) {
          
-         let content = flatten(times(45, (index) => 
-             (  
-               <BookCard></BookCard>
-              )
-         )) 
+         let content = this.state.books.map(book => {
+           const { data } = book 
+           const { "post-cover": cover, "post-subtitle": subtitle, "post-title": title, "post-uid": uid } = data 
+           return ( <BookCard image={data['post-cover'].url} 
+          title={RichText.asText(data['post-title'])} 
+          subtitle={RichText.asText(data['post-subtitle'])} 
+          uid={book.uid}>
+          </BookCard>)
+         })
          
         return (
           <div id='mainPage' ref='topNode'>

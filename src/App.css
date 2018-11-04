@@ -228,6 +228,7 @@ ul.soc > li:hover a {
 }
 
 #bookCardDetail {
+    font-family: "Mali";
     max-height: 155px;
     margin-top: -95px;
     background-color: white;
@@ -243,7 +244,7 @@ ul.soc > li:hover a {
 }
 
 #bookCardDetail h4 {
-    font-family: "Crimson Text", serif;
+    /* font-family: "Crimson Text", serif; */
     letter-spacing: 1.25px;
     line-height: 1.59;
     padding-left: 5px;
@@ -251,17 +252,17 @@ ul.soc > li:hover a {
 }
 
 #bookCardDetail a {
-    color: #B2B4B5;
-    font-size: 12px;
+    color: #1A1A1B;
+    font-size: 14px;
     margin-top: -5px;
     border-bottom: 1px solid transparent;
     transition: all ease-in 0.2s;
 }
-
+/* 
 #bookCardMotherDiv:hover #bookCardDetail > a {
     border-color: #CDA435
 
-}
+} */
 
 #blogCard {
     color: black
@@ -366,7 +367,7 @@ ul.soc > li:hover a {
 
     /* FONTS */
         
-    font-family: "Lato";
+    font-family: "Mali";
     text-align: center;
     
     background-image: linear-gradient(to right, white,#F7F1E3)
