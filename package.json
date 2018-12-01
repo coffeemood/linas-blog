@@ -21,7 +21,8 @@
     "react-masonry-component": "^6.2.0",
     "react-router-dom": "~4.2.2",
     "semantic-ui-css": "~2.2.14",
-    "whatwg-fetch": "~2.0.3"
+    "whatwg-fetch": "~2.0.3",
+    "react-scripts": "~1.0.14"
   },
   "devDependencies": {
     "babel-eslint": "4.x.x",
