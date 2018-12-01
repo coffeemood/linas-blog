@@ -1,17 +1,12 @@
 // In src/Page.js
 
 import React from 'react';
-import SidebarNav from './Sidebar';
 import { BulletList } from 'react-content-loader';
 import NotFound from '../NotFound';
-import {PrismicReact, Link, RichText, Date} from 'prismic-reactjs';
-import { Image, Segment, Grid, Icon, Modal } from 'semantic-ui-react';
-import { flatten, times } from 'lodash';
+import { RichText } from 'prismic-reactjs';
+import { Image, Modal } from 'semantic-ui-react';
 import moment from 'moment';
 
-//import 'semantic-ui-css/semantic.min.css';
-
-// Declare your component
 export default class Page extends React.Component {
 
   state = {
@@ -89,22 +84,10 @@ export default class Page extends React.Component {
   }
   
   render() {
-    // We will fill in this section in Step 3...
-      
-//      <div class="ui cube shape" id="imageDiv"><Image src={require('../img/adult-beautiful-casual-372042.jpg')} size='medium' id='profileImage'/></div>
-      
-     console.log({content: this.state.content, doc: this.state.doc})
+   
      let headerInfo = this.renderHeaderInfo()
-//     let pageTitle = this.renderMainPageTitle()
-     
      
      if (this.state.content) {
-         
-         let content = flatten(times(45, (index) => 
-             (<p key={index}>Te eum doming eirmod, nominati pertinacia argumentum ad his. Ex eam alia facete scriptorem, est autem aliquip detraxit at. Usu ocurreret referrentur at, cu epicurei appellantur vix. Cum ea laoreet recteque electram, eos choro alterum definiebas in. Vim dolorum definiebas an. Mei ex natum rebum iisque. Id vix fabulas oporteat, 😁😁😁😁😁😁 ei quo vide phaedrum, vim vivendum maiestatis in. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dui urna, pretium sed est quis, scelerisque consequat nunc. Vivamus eget arcu maximus, luctus nisi in, condimentum lacus. Integer laoreet, nunc eu varius vehicula, magna turpis pulvinar ligula, sed suscipit mauris augue ullamcorper dui. Duis et varius tortor, eu pretium tellus. Vestibulum efficitur arcu est, at placerat eros volutpat vel. Nullam tempor feugiat ante sed lacinia. Maecenas fringilla eleifend vehicula. Aliquam eget neque porttitor, feugiat massa accumsan, volutpat nisi. Aenean condimentum justo quis enim sollicitudin, in cursus lacus vehicula. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin sagittis diam a nisi.</p>)
-         ))
-         
-//         {content.map(c => c)}
          
         return (
           

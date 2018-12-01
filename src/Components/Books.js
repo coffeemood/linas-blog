@@ -2,14 +2,11 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SidebarNav from './Sidebar';
 import NotFound from '../NotFound';
-import { PrismicReact, RichText } from 'prismic-reactjs';
-import { Image, Card, Grid, Divider, Segment } from 'semantic-ui-react';
-import ScrollToTop from 'react-scroll-up';
-import { flatten, times } from 'lodash';
+import { RichText } from 'prismic-reactjs';
+import { Card } from 'semantic-ui-react';
 import { Link } from 'react-router-dom'
-import moment from 'moment';
+import Masonry from 'react-masonry-component'
 import BookCard from './BookCard'
 //import 'semantic-ui-css/semantic.min.css';
 
@@ -40,6 +37,8 @@ export default class Books extends React.Component {
       window.scrollTo(0, mainDiv.offsetTop);
   
   }
+
+  randomColor = () => ['red','brown','purple','yellow','orange'][(Math.floor(Math.random() * 4))]
 
   fetchBooks(props){
     if (props.prismicCtx) {
@@ -82,12 +81,18 @@ export default class Books extends React.Component {
          
          let content = this.state.books.map(book => {
            const { data } = book 
-           const { "post-cover": cover, "post-subtitle": subtitle, "post-title": title, "post-uid": uid } = data 
-           return ( <BookCard image={data['post-cover'].url} 
-          title={RichText.asText(data['post-title'])} 
-          subtitle={RichText.asText(data['post-subtitle'])} 
-          uid={book.uid}>
-          </BookCard>)
+           let title = RichText.asText(data['post-title'])
+           let subtitle = RichText.asText(data['post-subtitle'])
+           let uid = book.uid
+           let image = data['post-cover'].url
+           return ( <Link to={`/page/${uid}`} style={{margin: '20px'}}><Card
+           header={title}
+           image={image}
+           color={this.randomColor()}
+           description={subtitle}
+           id='blogCard'
+           className='hvr-grow'
+       /></Link>)
          })
          
         return (
@@ -97,9 +102,9 @@ export default class Books extends React.Component {
                 </div>
             
             <div color='orange' id='detailedSegment'>
-             
-              {content.map(c => c)}
-                
+              <Card.Group>
+                {content.map(c => c)}
+              </Card.Group>
             </div>
           </div>
         );

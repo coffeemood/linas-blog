@@ -1,17 +1,11 @@
 // In src/Page.js
 
 import React from 'react';
-import ReactDOM from 'react-dom';
-import SidebarNav from './Sidebar';
 import NotFound from '../NotFound';
 import { PrismicReact, RichText } from 'prismic-reactjs';
-import { Image, Card, Grid, Divider, Segment, Icon } from 'semantic-ui-react';
-import ScrollToTop from 'react-scroll-up';
-import { flatten, times } from 'lodash';
+import { Card } from 'semantic-ui-react';
 import { Link } from 'react-router-dom'
-import moment from 'moment';
 import Masonry from 'react-masonry-component'
-import Lorem from 'react-lorem-component'
 //import 'semantic-ui-css/semantic.min.css';
 
 // Declare your component
@@ -73,7 +67,7 @@ export default class Posts extends React.Component {
           let subtitle = RichText.asText(data['post-subtitle'])
           let uid = post.uid
           let image = data['post-cover'].url
-          content.push(<Link to={`/page/${uid}`}><Card
+          content.push(<Link to={`/page/${uid}`} style={{margin: '20px'}} ><Card
                         header={title}
                         image={image}
                         description={subtitle}
@@ -90,7 +84,6 @@ export default class Posts extends React.Component {
       
 //      <div class="ui cube shape" id="imageDiv"><Image src={require('../img/adult-beautiful-casual-372042.jpg')} size='medium' id='profileImage'/></div>
       
-     const { contextRef } = this.state
      let mainPageTitle = this.renderMainPageTitle()
      let detailedCss = 'detailedSegment' 
      
