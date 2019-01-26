@@ -2,7 +2,7 @@
 
 import React from 'react';
 import NotFound from '../NotFound';
-import { PrismicReact, RichText } from 'prismic-reactjs';
+import { RichText } from 'prismic-reactjs';
 import { Card } from 'semantic-ui-react';
 import { Link } from 'react-router-dom'
 import Masonry from 'react-masonry-component'

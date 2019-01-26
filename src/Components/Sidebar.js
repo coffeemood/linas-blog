@@ -1,10 +1,10 @@
 // In src/Page.js
 
 import React from 'react';
+import Prismic from 'prismic-javascript';
 import NotFound from '../NotFound';
 import { BulletList } from 'react-content-loader';
-import PrismicReact from 'prismic-reactjs';
-import { Sidebar, Segment, Menu, Icon, Image, List, Button, Divider } from "semantic-ui-react"
+import { Icon, Image, List } from "semantic-ui-react";
 import { Link } from 'react-router-dom'
 import 'semantic-ui-css/semantic.min.css';
 
@@ -19,10 +19,12 @@ class SidebarNav extends React.Component {
 
   componentWillMount() {
     this.fetchSinglePage(this.props);
+    this.fetchFeatured(this.props);
   }
 
   componentWillReceiveProps(props) {
     this.fetchSinglePage(props);
+    this.fetchFeatured(props);
   }
 
   fetchSinglePage(props) {
@@ -41,6 +43,15 @@ class SidebarNav extends React.Component {
     return null;
   }
 
+  fetchFeatured(props) {
+    if (props.prismicCtx) {
+      console.log('fetching featured posts')
+      return props.prismicCtx.api.query(
+        Prismic.Predicates.at("document.tags", ["featured"])
+      ).then((result) => { this.setState({ featured: result['results']}) })
+    }
+  }
+
   rendermediaBar = () => { return (
       
     <ul class="soc" style={{marginTop: '20px'}}>
@@ -51,56 +62,25 @@ class SidebarNav extends React.Component {
             
       )}
   
-  renderFeatured = () => { return (
+  renderFeatured = () => { 
+    const { featured } = this.state
+  
+    const featuredItem = featured.map(item => { 
+      return (
+      <List.Item> 
+        <List.Content>
+        <Link to={`/page/${item.uid}`} style={{margin: '20px'}} >
+            <List.Header> { item.data['post-title'][0] ? item.data['post-title'][0].text : '' } </List.Header>
+            { item.data['post-subtitle'][0] ? item.data['post-subtitle'][0].text : '' }
+          </Link>
+        </List.Content>
+      </List.Item>
+        ) 
+    }); 
+
+    return (
      <List divided selection verticalAlign='middle' id='featuredList'>
-      <List.Item>
-        <List.Content>
-          <List.Header>My two little angels</List.Header>
-          On being a working mom
-        </List.Content>
-      </List.Item>
-      <List.Item>
-        <List.Content>
-          <List.Header>On the memories of France </List.Header>
-          A poodle, its pretty basic
-        </List.Content>
-      </List.Item>
-      <List.Item>
-        <List.Content>
-          <List.Header>Paulo</List.Header>
-          He's also a dog
-        </List.Content>
-      </List.Item>
-      <List.Item>
-        <List.Content>
-          <List.Header>The AUF Journey </List.Header>
-          My first job 
-        </List.Content>
-      </List.Item>
-      <List.Item>
-        <List.Content>
-          <List.Header>All my past romances </List.Header>
-          The Goods, The Bads & The Ugly 
-        </List.Content>
-      </List.Item>
-      <List.Item>
-        <List.Content>
-          <List.Header>The Poets </List.Header>
-          Contemplating Night and Day  
-        </List.Content>
-      </List.Item>
-      <List.Item>
-        <List.Content>
-          <List.Header>A Night Out On The Town </List.Header>
-          City Light Sparkles, Whispers of the Wind  
-        </List.Content>
-      </List.Item>
-      <List.Item>
-        <List.Content>
-          <List.Header>Paris </List.Header>
-          Croissant, Eiffel Tower & Love Birds 
-        </List.Content>
-      </List.Item>
+       { featuredItem }
     </List>
   )}
   
@@ -108,7 +88,8 @@ class SidebarNav extends React.Component {
       
     let sidebar = this.state.sidebar 
     let socialMedia = this.rendermediaBar()
-    let featuredList = this.renderFeatured() 
+    let featuredList = this.state.featured ? this.renderFeatured() : ' '
+    console.log(featuredList)
     
     // We will fill in this section in Step 3...
      if (this.state.sidebar) {
