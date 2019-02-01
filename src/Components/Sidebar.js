@@ -3,9 +3,13 @@
 import React from 'react';
 import Prismic from 'prismic-javascript';
 import NotFound from '../NotFound';
+
 import { BulletList } from 'react-content-loader';
 import { Icon, Image, List } from "semantic-ui-react";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+
+import { fetchSingle, fetchTag } from '../Services/prismic';
+
 import 'semantic-ui-css/semantic.min.css';
 
 
@@ -18,38 +22,13 @@ class SidebarNav extends React.Component {
   }
 
   componentWillMount() {
-    this.fetchSinglePage(this.props);
-    this.fetchFeatured(this.props);
+    fetchSingle('linas-sidebar').then(sidebar => { this.setState({sidebar} )})
+    fetchTag("document.tags",["featured"]).then(result => { this.setState({featured: result["results"]}) })
   }
 
   componentWillReceiveProps(props) {
-    this.fetchSinglePage(props);
-    this.fetchFeatured(props);
-  }
-
-  fetchSinglePage(props) {
-    if (props.prismicCtx) {
-      // We are using the function to get a document by its uid
-      return props.prismicCtx.api.getSingle('linas-sidebar').then((doc) => {
-        if (doc) {
-          // We put the retrieved content in the state as a doc variable
-          this.setState({ sidebar: doc });
-        } else {
-          // We changed the state to display error not found if no matched doc
-          this.setState({ notFound: !doc });
-        }
-      });
-    }
-    return null;
-  }
-
-  fetchFeatured(props) {
-    if (props.prismicCtx) {
-      console.log('fetching featured posts')
-      return props.prismicCtx.api.query(
-        Prismic.Predicates.at("document.tags", ["featured"])
-      ).then((result) => { this.setState({ featured: result['results']}) })
-    }
+    fetchSingle('linas-sidebar').then(sidebar => { this.setState({sidebar} )})
+    fetchTag("document.tags",["featured"]).then(result => { this.setState({featured: result["results"]}) })
   }
 
   rendermediaBar = () => { return (

@@ -87,6 +87,13 @@ ul.soc > li:hover a {
     }
 }
 
+/* @media only screen and (max-width: 500px) {
+    #menubar {
+        display: none; 
+        left: -30%; 
+    }
+} */
+
 #locationMotherDiv, #locationImageWrapper {
     border-radius: 8px 8px 8px 8px;
     -moz-border-radius: 8px 8px 8px 8px;

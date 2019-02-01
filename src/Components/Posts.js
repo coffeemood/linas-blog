@@ -4,8 +4,8 @@ import React from 'react';
 import NotFound from '../NotFound';
 import { RichText } from 'prismic-reactjs';
 import { Card } from 'semantic-ui-react';
-import { Link } from 'react-router-dom'
-import Masonry from 'react-masonry-component'
+import { Link } from 'react-router-dom';
+import Masonry from 'react-masonry-component';
 //import 'semantic-ui-css/semantic.min.css';
 
 // Declare your component

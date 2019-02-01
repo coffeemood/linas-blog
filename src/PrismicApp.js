@@ -36,13 +36,11 @@ export default class PrismicApp extends React.Component {
   }
 
   buildContext() {
-    const accessToken = PrismicConfig.accessToken;
     const Predicates = Prismic.Predicates
-    return Prismic.api(PrismicConfig.apiEndpoint, { accessToken }).then(api => ({
+    return Prismic.api(PrismicConfig.apiEndpoint).then(api => ({
       api,
       Predicates,
       endpoint: PrismicConfig.apiEndpoint,
-      accessToken,
       linkResolver: PrismicConfig.linkResolver,
       toolbar: this.refreshToolbar,
     }));
