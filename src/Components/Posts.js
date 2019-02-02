@@ -6,9 +6,9 @@ import { RichText } from 'prismic-reactjs';
 import { Card } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import Masonry from 'react-masonry-component';
-//import 'semantic-ui-css/semantic.min.css';
 
-// Declare your component
+import { fetchQuery } from '../Services/prismic';
+
 export default class Posts extends React.Component {
 
   state = {
@@ -17,36 +17,18 @@ export default class Posts extends React.Component {
   }
 
   componentWillMount() {
-    this.fetchPosts(this.props);
-    this.flipFooter = this.flipFooter.bind(this);
+    this.fetchPosts();
   }
 
   componentWillReceiveProps(props) {
-    this.fetchPosts(props);
+    this.fetchPosts();
   }
 
-  componentDidUpdate() {
-//    this.props.prismicCtx.toolbar();
-  }
-
-  fetchPosts(props) {
-    if (props.prismicCtx) {
-      // We are using the function to get a document by its uid
-      let query = [props.prismicCtx.Predicates.at('document.type', 'linas-posts'),
-                  props.prismicCtx.Predicates.at('my.linas-posts.post-type', 'life')
-      ]
-
-      return props.prismicCtx.api.query(query).then((doc) => {
-        if (doc) {
-          // We put the retrieved content in the state as a doc variable
-          this.setState({ life: doc.results });
-        } else {
-          // We changed the state to display error not found if no matched doc
-          this.setState({ notFound: !doc });
-        }
-      });
-    }
-    return null;
+  fetchPosts(){
+    fetchQuery([
+      ['document.type', 'linas-posts'],
+      ['my.linas-posts.post-type', 'life']
+    ]).then(res => this.setState({ life: res.results }))
   }
 
   flipFooter = () => {

@@ -1,14 +1,13 @@
 // In src/Page.js
 
 import React from 'react';
-import Prismic from 'prismic-javascript';
 import NotFound from '../NotFound';
 
 import { BulletList } from 'react-content-loader';
 import { Icon, Image, List } from "semantic-ui-react";
 import { Link } from 'react-router-dom';
 
-import { fetchSingle, fetchTag } from '../Services/prismic';
+import { fetchSingle, fetchQuery } from '../Services/prismic';
 
 import 'semantic-ui-css/semantic.min.css';
 
@@ -22,13 +21,23 @@ class SidebarNav extends React.Component {
   }
 
   componentWillMount() {
-    fetchSingle('linas-sidebar').then(sidebar => { this.setState({sidebar} )})
-    fetchTag("document.tags",["featured"]).then(result => { this.setState({featured: result["results"]}) })
+    this.fetchSidebar();
+    this.fetchFeatured();
   }
 
   componentWillReceiveProps(props) {
+    this.fetchSidebar();
+    this.fetchFeatured();
+  }
+
+  fetchSidebar(){
     fetchSingle('linas-sidebar').then(sidebar => { this.setState({sidebar} )})
-    fetchTag("document.tags",["featured"]).then(result => { this.setState({featured: result["results"]}) })
+  }
+
+  fetchFeatured(){
+    fetchQuery([
+      ["document.tags",["featured"]]
+    ]).then(result => { this.setState({featured: result["results"]}) })
   }
 
   rendermediaBar = () => { return (

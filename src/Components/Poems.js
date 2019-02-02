@@ -1,17 +1,10 @@
 // In src/Page.js
 
 import React from 'react';
-import ReactDOM from 'react-dom';
-import SidebarNav from './Sidebar';
 import NotFound from '../NotFound';
-import PrismicReact from 'prismic-reactjs';
-import { Image, Card, Grid, Divider, Segment } from 'semantic-ui-react';
-import { flatten, times } from 'lodash';
 import { Link } from 'react-router-dom'
-import moment from 'moment';
 import Masonry from 'react-masonry-component';
-import BookCard from './BookCard';
-import fs from 'fs';
+
 //import 'semantic-ui-css/semantic.min.css';
 
 // Declare your component
@@ -60,8 +53,6 @@ export default class Poems extends React.Component {
 
   render() {
       
-      
-     const { contextRef } = this.state
      let mainPageTitle = this.renderMainPageTitle()
      let detailedCss = 'detailedSegment'
      

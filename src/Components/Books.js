@@ -1,14 +1,13 @@
 // In src/Page.js
 
 import React from 'react';
-import ReactDOM from 'react-dom';
 import NotFound from '../NotFound';
 import { RichText } from 'prismic-reactjs';
 import { Card } from 'semantic-ui-react';
 import { Link } from 'react-router-dom'
-//import 'semantic-ui-css/semantic.min.css';
 
-// Declare your component
+import { fetchQuery } from '../Services/prismic';
+
 export default class Books extends React.Component {
 
   state = {
@@ -17,46 +16,21 @@ export default class Books extends React.Component {
   }
 
   componentWillMount() {
-    this.fetchBooks(this.props);
-    this.renderLogo = this.renderLogo.bind(this);
-    this.scrollToTop = this.scrollToTop.bind(this);
+    this.fetchBooks();
   }
 
   componentWillReceiveProps(props) {
-    this.fetchBooks(props);
+    this.fetchBooks();
   }
 
-  componentDidUpdate() {
-//    this.props.prismicCtx.toolbar();
-  }
-
-  scrollToTop = (event) => { 
-      const mainDiv = ReactDOM.findDOMNode(this.refs.topNode)
-      window.scrollTo(0, mainDiv.offsetTop);
-  
+  fetchBooks(){
+    fetchQuery([
+      ['document.type', 'linas-posts'],
+      ['my.linas-posts.post-type', 'book']
+    ]).then(res => this.setState({ books: res.results }))
   }
 
   randomColor = () => ['red','brown','purple','yellow','orange'][(Math.floor(Math.random() * 4))]
-
-  fetchBooks(props){
-    if (props.prismicCtx) {
-      // We are using the function to get a document by its uid
-      let query = [props.prismicCtx.Predicates.at('document.type', 'linas-posts'),
-                  props.prismicCtx.Predicates.at('my.linas-posts.post-type', 'book')
-      ]
-
-      return props.prismicCtx.api.query(query).then((doc) => {
-        if (doc) {
-          // We put the retrieved content in the state as a doc variable
-          this.setState({ books: doc.results });
-        } else {
-          // We changed the state to display error not found if no matched doc
-          this.setState({ notFound: !doc });
-        }
-      });
-    }
-    return null;
-  }
 
   
   renderLogo = () => {
@@ -71,7 +45,6 @@ export default class Books extends React.Component {
 
   render() {
    
-     const { contextRef } = this.state
      let mainPageTitle = this.renderMainPageTitle()
      
       

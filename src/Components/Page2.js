@@ -5,7 +5,10 @@ import { BulletList } from 'react-content-loader';
 import NotFound from '../NotFound';
 import { RichText } from 'prismic-reactjs';
 import { Image, Modal } from 'semantic-ui-react';
+
 import moment from 'moment';
+
+import { fetchUID } from '../Services/prismic';
 
 export default class Page extends React.Component {
 
@@ -16,33 +19,18 @@ export default class Page extends React.Component {
   }
 
   componentWillMount() {
-    this.fetchSinglePage(this.props);
+    this.fetchPosts(this.props.match.params.uid);
     this.setState({open: true})
   }
 
   componentWillReceiveProps(props) {
-//    console.log(props)
-    this.fetchSinglePage(props);
-
+    this.fetchPosts(props.match.params.uid);
   }
 
-  componentDidUpdate() {
-//    this.props.prismicCtx.toolbar();
-  }
-
-  fetchSinglePage(props) {
-    if (props.prismicCtx && props.match.params) {
-      // We are using the function to get a document by its uid
-      return props.prismicCtx.api.getByUID('linas-posts', props.match.params.uid).then(doc => {
-        if (doc) {
-          console.log(doc.data)
-          this.setState({ content: doc.data, doc: doc, type: doc.data['post-type'] });
-        } else {
-          this.setState({ notFound: !doc });
-        }
-      });
-    }
-    return null;
+  fetchPosts(uid) {
+    fetchUID('linas-posts',uid).then(doc => {
+      this.setState({ content: doc.data, doc: doc, type: doc.data['post-type'] });
+    })
   }
 
   renderHeaderInfo = () => {
@@ -69,7 +57,6 @@ export default class Page extends React.Component {
   closeContent = () => { 
     this.setState({open: false})
     let place = ''
-    console.log(`Type is ${this.state.type} motherfucker`)
     switch(this.state.type){
       case 'book':
         place = 'books';

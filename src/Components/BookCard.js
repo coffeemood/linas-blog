@@ -1,8 +1,6 @@
 // In src/Page.js
 
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Image, Card, Grid, Divider, Segment } from 'semantic-ui-react';
 import { Link } from 'react-router-dom'
 
 // Declare your component

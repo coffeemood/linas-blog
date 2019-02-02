@@ -2,8 +2,10 @@
 
 import React from 'react';
 import NotFound from '../NotFound';
-import PrismicReact from 'prismic-reactjs';
 import { Sidebar, Segment, Menu, Icon } from "semantic-ui-react"
+
+import { fetchSingle } from '../Services/prismic';
+
 import 'semantic-ui-css/semantic.min.css';
 
 // Declare your component
@@ -15,34 +17,20 @@ export default class SidebarNav extends React.Component {
   }
 
   componentWillMount() {
-    this.fetchSinglePage(this.props);
+    this.fetchSidebar();
   }
 
   componentWillReceiveProps(props) {
-    console.log(props)
-    this.fetchSinglePage(props);
+    this.fetchSidebar();
   }
 
-  fetchSinglePage(props) {
-    if (props.prismicCtx) {
-      // We are using the function to get a document by its uid
-      return props.prismicCtx.api.getSingle('linas-sidebar').then((doc) => {
-        if (doc) {
-       
-          // We put the retrieved content in the state as a doc variable
-          this.setState({ sidebar: doc });
-        } else {
-          // We changed the state to display error not found if no matched doc
-          this.setState({ notFound: !doc });
-        }
-      });
-    }
-    return null;
+  fetchSidebar(){
+    fetchSingle('linas-sidebar').then(sidebar => { this.setState({sidebar} )})
   }
 
   render() {
     let sidebar = this.state.sidebar
-    // We will fill in this section in Step 3...
+    
      if (this.state.sidebar) {
         return (
           <div>
