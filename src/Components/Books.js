@@ -82,6 +82,6 @@ export default class Books extends React.Component {
       } else if (this.state.notFound) {
         return <NotFound />;
       }
-      return <h1>Loading ... </h1>;
+      return <div id='mainPage' ref='topNode'></div>;
     }
   }

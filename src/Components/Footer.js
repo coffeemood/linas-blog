@@ -1,10 +1,7 @@
 // In src/Page.js
 
 import React from 'react';
-import NotFound from '../NotFound';
-import PrismicReact from 'prismic-reactjs';
-import { Sidebar, Segment, Menu, Icon, Image, List, Button, Divider, Modal, Header, Grid } from "semantic-ui-react"
-import { Link } from 'react-router-dom'
+import { List, Modal, Grid } from "semantic-ui-react"
 import 'semantic-ui-css/semantic.min.css';
 
 
@@ -28,7 +25,6 @@ class Footer extends React.Component {
 
   render() {
     
-    let footer = this.state.footer 
     console.log({prop: this.props, state: this.state})
     
     return (<Modal id='footerDimmer' basic open={this.state.footer} onClose={() => { this.props.flipFooter(false) }} style={{width: '100vw', height: '100vh', justifyContent: 'center'}}>
@@ -70,7 +66,7 @@ class Footer extends React.Component {
                         <li><a class="soc-instagram soc-icon-last"  target="_blank" href="https://www.instagram.com/linh.nga1703/" id='iconFooter'></a></li>
                     </ul>
                 </Grid.Column>
-                 <Grid.Column style={{display: 'inherit'}}>
+                <Grid.Column style={{display: 'inherit'}}>
                     <div id='logoFooter'>
                          <h3 id='logoTextFooter'> LN </h3>
                      </div> 

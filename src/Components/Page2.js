@@ -64,6 +64,9 @@ export default class Page extends React.Component {
       case 'life':
         place = 'posts';
         break;
+      case 'poem':
+        place = 'poems';
+        break;
     }
 
     this.props.history.push(`/${place}`)

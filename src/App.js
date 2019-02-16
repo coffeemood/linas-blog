@@ -22,7 +22,7 @@ import NotFound from './NotFound';
 const App = (props) => { 
 
     const sidebar = <Route render={routeProps => <SidebarNav {...routeProps} prismicCtx={props.prismicCtx}  showFooter={props.showFooter} flipFooter={(show) => props.fetchShowFooter(show)}/> } /> 
-    
+  
     const footer = props.showFooter ? <Route render={routeProps => <Footer {...routeProps} prismicCtx={props.prismicCtx} showFooter={props.showFooter} flipFooter={(show) => props.fetchShowFooter(show)} /> } /> : ''
     
     let mainpageCol = 'twelve wide column' 
@@ -38,8 +38,8 @@ return (
             <Switch>
               <Redirect exact from="/" to="/posts"/>
               <Route exact path="/help" component={Help} />
-              <Route exact path="/posts" render={routeProps => <Posts {...routeProps} prismicCtx={props.prismicCtx} showFooter={props.showFooter} flipFooter={(show) => props.fetchShowFooter(show)} />} />
-              <Route exact path="/page/:uid" render={routeProps => <Posts {...routeProps} prismicCtx={props.prismicCtx} showFooter={props.showFooter} flipFooter={(show) => props.fetchShowFooter(show)} />} />
+              <Route exact path="/posts" render={routeProps => <Posts {...routeProps} prismicCtx={props.prismicCtx} />} />
+              {/* <Route exact path="/page/:uid" render={routeProps => <Posts {...routeProps} prismicCtx={props.prismicCtx} />} /> */}
               <Route exact path="/books" render={routeProps => <Books {...routeProps} prismicCtx={props.prismicCtx} />} />
               <Route exact path="/poems" render={routeProps => <Poems {...routeProps} prismicCtx={props.prismicCtx} />} />
               <Route exact path="/trips" render={routeProps => <TripList {...routeProps} prismicCtx={props.prismicCtx} />} />

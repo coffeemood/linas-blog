@@ -12,7 +12,7 @@
     "prismic-javascript": "^1.5.1",
     "prismic-reactjs": "^0.2.0",
     "qs": "^6.4.0",
-    "radium": "^0.24.0",
+    "radium": "^0.25.1",
     "react": "^16.2.0",
     "react-animations": "^1.0.0",
     "react-content-loader": "^3.2.0",

@@ -3,6 +3,7 @@
 
 ## Features / Improvements checklist
 
+* Port all Footer / Sidebar props to Redux Store 
 * Comment section [ medium ]
 * Travel nested [ high ]
 * Mobile view [ high ]
