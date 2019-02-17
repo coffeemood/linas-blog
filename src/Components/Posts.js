@@ -49,7 +49,7 @@ export default class Posts extends React.Component {
           let subtitle = RichText.asText(data['post-subtitle'])
           let uid = post.uid
           let image = data['post-cover'].url
-          content.push(<Link to={`/page/${uid}`} style={{margin: '20px'}} ><Card
+          content.push(<Link to={`/life/${uid}`} style={{margin: '20px'}} ><Card
                         header={title}
                         image={image}
                         description={subtitle}
@@ -83,9 +83,8 @@ export default class Posts extends React.Component {
             
             <div color='orange' id={detailedCss}>
              <Masonry id='masonry'>
-              {content.map(c => c)}
-               </Masonry>
-
+                {content.map(c => c)}
+              </Masonry>
             </div>
           </div>
         );

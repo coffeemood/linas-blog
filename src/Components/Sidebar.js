@@ -55,7 +55,7 @@ class SidebarNav extends React.Component {
   
     const featuredItem = featured.map(item => { 
       return (
-      <Link to={`/page/${item.uid}`} style={{margin: '20px', color: 'black', overflow: 'auto'}} id='featuredItem' className='hvr-grow' >
+      <Link to={`/${item['data']['post-type']}/${item.uid}`} style={{margin: '20px', color: 'black', overflow: 'auto'}} id='featuredItem' className='hvr-grow' >
         <List.Item> 
           <List.Content>
             <List.Header> { item.data['post-title'][0] ? item.data['post-title'][0].text : '' } </List.Header>
@@ -94,10 +94,10 @@ class SidebarNav extends React.Component {
              <h3 id='profileSegment'> Menu </h3>
              <hr id='sidebarHori'></hr>
              <div class="menubarItemGrid">
-                  <Link to='/posts' className='hvr-buzz'><a class="item"><Icon name='pencil'/>{sidebar.data.category2[0].text}</a></Link>
-                  <Link to='/books' className='hvr-buzz'><a class="item"><Icon name='book'/>{sidebar.data.category3[0].text}</a></Link>
-                  <Link to='/trips' className='hvr-buzz'><a class="item"><Icon name='paw'/>{sidebar.data.category4[0].text}</a></Link>
-                  <Link to='/poems' className='hvr-buzz'><a class="item"><Icon name='snowflake'/>{sidebar.data.category5[0].text}</a></Link>
+                  <Link to='/life' className='hvr-buzz'><a class="item"><Icon name='pencil'/>{sidebar.data.category2[0].text}</a></Link>
+                  <Link to='/book' className='hvr-buzz'><a class="item"><Icon name='book'/>{sidebar.data.category3[0].text}</a></Link>
+                  <Link to='/trip' className='hvr-buzz'><a class="item"><Icon name='paw'/>{sidebar.data.category4[0].text}</a></Link>
+                  <Link to='/poem' className='hvr-buzz'><a class="item"><Icon name='snowflake'/>{sidebar.data.category5[0].text}</a></Link>
              </div>
              <h3 id='profileSegment'> Social Media </h3>
              <hr id='sidebarHori'></hr>

@@ -41,7 +41,7 @@ export default class Poems extends React.Component {
       const title = RichText.asText(data['post-title'])
       const image = data['post-cover'].url
       content.push(  
-        <Link to={`/page/${uid}`}><div id='poemMotherDiv' style={{maxWidth: '300px', maxHeight: '750px', float: 'none', margin: 'auto' }}>
+        <Link to={`/poem/${uid}`}><div id='poemMotherDiv' style={{maxWidth: '300px', maxHeight: '750px', float: 'none', margin: 'auto' }}>
             <img src={image} style={{maxWidth: '100%', maxHeight: '100%'}}/>
             <div id='poemTextContainer'>
               <div id='poemLabel'> { title } </div>

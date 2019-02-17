@@ -54,24 +54,10 @@ export default class Page extends React.Component {
       
   }
   
-  closeContent = () => { 
-    this.setState({open: false})
-    let place = ''
-    switch(this.state.type){
-      case 'book':
-        place = 'books';
-        break;
-      case 'life':
-        place = 'posts';
-        break;
-      case 'poem':
-        place = 'poems';
-        break;
-    }
-
-    this.props.history.push(`/${place}`)
-    
-  }
+  closeContent = () => {
+    const prevPath = this.props.location.pathname.split('/')[1].split('/')[0]
+    this.props.history.push(`/${prevPath}`)
+   }
   
   render() {
    

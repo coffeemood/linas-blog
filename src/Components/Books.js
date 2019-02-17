@@ -56,7 +56,7 @@ export default class Books extends React.Component {
            let subtitle = RichText.asText(data['post-subtitle'])
            let uid = book.uid
            let image = data['post-cover'].url
-           return ( <Link to={`/page/${uid}`} style={{margin: '20px'}}><Card
+           return ( <Link to={`/book/${uid}`} style={{margin: '20px'}}><Card
            header={title}
            image={image}
            color={this.randomColor()}
