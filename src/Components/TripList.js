@@ -113,7 +113,8 @@ export default class TripList extends React.Component {
             { countryInfo }
             <div color='orange' id='detailedSegment'>
              
-              {content.map(c => c)}
+              {/* {content.map(c => c)} */}
+              <h1 style={{color: 'black', fontWeight: 'bold', textAlign: 'center', marginTop: '30%', letterSpacing: '1.2px' }}> COMING SOON  </h1>
                 
             </div>
           </div>
