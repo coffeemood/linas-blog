@@ -25,8 +25,6 @@ class Footer extends React.Component {
 
   render() {
     
-    console.log({prop: this.props, state: this.state})
-    
     return (<Modal id='footerDimmer' basic open={this.state.footer} onClose={() => { this.props.flipFooter(false) }} style={{width: '100vw', height: '100vh', justifyContent: 'center'}}>
            
            <Modal.Content style={{marginTop: '150px'}}>

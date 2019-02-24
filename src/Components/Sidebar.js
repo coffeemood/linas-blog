@@ -94,10 +94,10 @@ class SidebarNav extends React.Component {
              <h3 id='profileSegment'> Menu </h3>
              <hr id='sidebarHori'></hr>
              <div class="menubarItemGrid">
-                  <Link to='/life' className='hvr-buzz'><a class="item"><Icon name='pencil'/>{sidebar.data.category2[0].text}</a></Link>
-                  <Link to='/book' className='hvr-buzz'><a class="item"><Icon name='book'/>{sidebar.data.category3[0].text}</a></Link>
-                  <Link to='/trip' className='hvr-buzz'><a class="item"><Icon name='paw'/>{sidebar.data.category4[0].text}</a></Link>
-                  <Link to='/poem' className='hvr-buzz'><a class="item"><Icon name='snowflake'/>{sidebar.data.category5[0].text}</a></Link>
+                  <Link to='/life' ><a class="item"><Icon name='pencil'/>{sidebar.data.category2[0].text}</a></Link>
+                  <Link to='/book' ><a class="item"><Icon name='book'/>{sidebar.data.category3[0].text}</a></Link>
+                  <Link to='/trip' ><a class="item"><Icon name='paw'/>{sidebar.data.category4[0].text}</a></Link>
+                  <Link to='/poem' ><a class="item"><Icon name='snowflake'/>{sidebar.data.category5[0].text}</a></Link>
              </div>
              <h3 id='profileSegment'> Social Media </h3>
              <hr id='sidebarHori'></hr>

@@ -3,12 +3,11 @@
 
 ## Features / Improvements checklist
 
-* Port all Footer / Sidebar props to Redux Store 
-* Comment section [ medium ]
-* Travel nested [ high ]
+* Fix infinite scrolling [high]
+* Clean up console, run react in webpack prod mode [high]
 * Mobile view [ high ]
-
-
+* Travel nested [ high ]
+* Comment section [ medium ]
 
 ## Known bugs 
 

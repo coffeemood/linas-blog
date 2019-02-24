@@ -28,7 +28,6 @@ export default class TripList extends React.Component {
     this.renderCountry = this.renderCountry.bind(this);
       
     let cprop = this.props
-    console.log(cprop)
       if (this.props.onPage){
           // fetch country info here 
       }
@@ -45,7 +44,6 @@ export default class TripList extends React.Component {
 
   scrollToTop = (event) => { 
       const mainDiv = ReactDOM.findDOMNode(this.refs.topNode)
-      console.log(this.refs)
       window.scrollTo(0, mainDiv.offsetTop);
   
   }
@@ -114,7 +112,7 @@ export default class TripList extends React.Component {
             <div color='orange' id='detailedSegment'>
              
               {/* {content.map(c => c)} */}
-              <h1 style={{color: 'black', fontWeight: 'bold', textAlign: 'center', marginTop: '30%', letterSpacing: '1.2px' }}> COMING SOON  </h1>
+              <h1 style={{color: 'black', fontWeight: '500', fontFamily: 'Mali', textAlign: 'center', marginTop: '30%', letterSpacing: '1.2px' }}> COMING SOON  </h1>
                 
             </div>
           </div>

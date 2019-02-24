@@ -22,7 +22,7 @@ import NotFound from './NotFound';
 
 const App = (props) => { 
 
-  console.log(props)
+
   const sidebar = <Route render={routeProps => <SidebarNav {...routeProps} prismicCtx={props.prismicCtx}  showFooter={props.showFooter} flipFooter={(show) => props.fetchShowFooter(show)}/> } /> 
   const footer = props.showFooter ? <Route render={routeProps => <Footer {...routeProps} prismicCtx={props.prismicCtx} showFooter={props.showFooter} flipFooter={(show) => props.fetchShowFooter(show)} /> } /> : ''  
   let mainpageCol = 'twelve wide column' 

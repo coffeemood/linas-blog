@@ -84,10 +84,20 @@ export default class Page extends React.Component {
 
           
         );
-      } else if (this.state.notFound) {
-        return <NotFound />;
+      } else {
+        return (
+          <Modal size='large' dimmer='inverted' open={this.state.open} onClose={this.closeContent}>
+          <Modal.Header> 
+              
+          </Modal.Header>
+          <Modal.Content id='blogSegment'>
+           
+            <br></br><br></br><br></br><br></br><br></br>
+    
+          </Modal.Content>
+        </Modal>
+        )
       }
-      return <BulletList animate="true" width="600" height="600" />;
     }
 }
 

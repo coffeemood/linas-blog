@@ -60,9 +60,7 @@ export default class Poems extends React.Component {
      if (this.state.poems) {
          
         // window.dispatchEvent(new Event('resize'));
-        console.log(this.state.poems)
         const content = this.renderPoems(this.state.poems)
-        console.log(content)
          
         return (
           <div id='mainPage' ref='topNode'>

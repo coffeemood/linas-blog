@@ -9,7 +9,7 @@ export default class Help extends React.Component {
   static validateOnboarding() {
     const repoEndpoint = PrismicConfig.apiEndpoint.replace('/api/v2', '');
     fetch(`${repoEndpoint}/app/settings/onboarding/run`, { method: 'POST' })
-      .catch(() => console.log('Cannot access your repository, check your api endpoint'));
+      .catch(() =>);
   }
 
   static getRepositoryInfo() {
