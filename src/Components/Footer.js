@@ -54,9 +54,9 @@ class Footer extends React.Component {
                     <List.Item icon='marker' content='Hanoi, VN' />
                     <List.Item
                       icon='mail'
-                      content={<a href='mailto:jack@semantic-ui.com'>linh.nga1703@gmail.com</a>}
+                      content={<a href='mailto:linh.nga1703@gmail.com'>linh.nga1703@gmail.com</a>}
                     />
-                    <List.Item icon='globe' content={<a href='http://www.semantic-ui.com'>linas-blog.com</a>} />
+                    <List.Item icon='globe' content={<a href='http://www.laviedelina.me'>laviedelina.me</a>} />
                   </List>
                 </Grid.Column>
                  <Grid.Column style={{display: 'inherit', marginLeft: '-10px'}}>

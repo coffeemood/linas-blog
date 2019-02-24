@@ -15,7 +15,7 @@ export default class TripCard extends React.Component {
     return (        
       <div id='locationMotherDiv'>
             <div id='locationImageWrapper'>
-                <img id='locationImage' src={require('../img/location2.jpg')}></img>
+              <img id='locationImage' src={require('../img/location2.jpg')}></img>
             </div>
             <div id='locationTextContainer'>
                 <div id='locationLabel'> United Kingdom </div>
