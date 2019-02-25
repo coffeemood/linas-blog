@@ -37,7 +37,7 @@ export default class Page extends React.Component {
       if (this.state.content){
           let content = this.state.content
           return (
-              <div class="ui full grid" verticalAlign='bottom' style={{marginTop: '10px', display: 'block'}}>
+              <div class="ui full grid"  style={{marginTop: '10px', display: 'block', verticalAlign: 'bottom'}}>
 
                <h1 id='postHeader1'> { RichText.render(content['post-title']) } </h1> 
                

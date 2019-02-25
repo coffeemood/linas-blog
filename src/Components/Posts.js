@@ -55,6 +55,7 @@ export default class Posts extends React.Component {
                         description={subtitle}
                         id='blogCard'
                         className='hvr-grow'
+                        key={title}
                     /></Link>)
           count += 1 
           if (count == posts.length) return content

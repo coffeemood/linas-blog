@@ -13,7 +13,6 @@ export const fetchSingle = (id) => (
 
 export const fetchUID = (tag, uid) => (
     new Promise (resolve => {
-        console.log({tag, uid})
         Prismic.api(repository).then(api => {
             api.getByUID(tag, uid).then((doc) => { resolve(doc) }) 
         })

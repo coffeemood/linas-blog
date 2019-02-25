@@ -55,7 +55,7 @@ class SidebarNav extends React.Component {
   
     const featuredItem = featured.map(item => { 
       return (
-      <Link to={`/${item['data']['post-type']}/${item.uid}`} style={{margin: '20px', color: 'black', overflow: 'auto'}} id='featuredItem' className='hvr-grow' >
+      <Link to={`/${item['data']['post-type']}/${item.uid}`} key={item['data']['post-title']} style={{margin: '20px', color: 'black', overflow: 'auto'}} id='featuredItem' className='hvr-grow' >
         <List.Item> 
           <List.Content>
             <List.Header> { item.data['post-title'][0] ? item.data['post-title'][0].text : '' } </List.Header>
@@ -67,7 +67,7 @@ class SidebarNav extends React.Component {
     }); 
 
     return (
-     <List divided selection verticalAlign='middle' id='featuredList'>
+     <List divided selection style={{ verticalAlign: 'middle' }} id='featuredList'>
        { featuredItem }
     </List>
   )}

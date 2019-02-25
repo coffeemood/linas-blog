@@ -4,6 +4,14 @@
   "author": "Nam Do",
   "private": true,
   "dependencies": {
+    "eslint": "^2.2.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-import": "^0.13.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-jest": "^21.26.2",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "express": "^4.16.4",
     "highlight.js": "~9.12.0",
     "jquery": "~3.2.1",
     "js-cookie": "^2.2.0",
@@ -25,14 +33,7 @@
     "react-sticky-header": "^0.1.9",
     "semantic-ui-css": "~2.2.14",
     "semantic-ui-react": "^0.78.3",
-    "whatwg-fetch": "~2.0.3",
-    "eslint": "^2.2.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-import": "^0.13.0",
-    "eslint-plugin-import": "2.14.0",
-    "eslint-plugin-jest": "^21.26.2",
-    "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-react": "^7.11.1"
+    "whatwg-fetch": "~2.0.3"
   },
   "devDependencies": {
     "babel-eslint": "4.x.x",
