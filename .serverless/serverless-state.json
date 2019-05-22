@@ -1,0 +1,179 @@
+{
+  "service": {
+    "service": "linas-blog",
+    "serviceObject": {
+      "name": "linas-blog"
+    },
+    "provider": {
+      "stage": "dev",
+      "region": "us-east-1",
+      "variableSyntax": "\\${([ ~:a-zA-Z0-9._@'\",\\-\\/\\(\\)*]+?)}",
+      "name": "aws",
+      "runtime": "nodejs8.10",
+      "versionFunctions": true,
+      "remoteFunctionData": null,
+      "compiledCloudFormationTemplate": {
+        "AWSTemplateFormatVersion": "2010-09-09",
+        "Description": "The AWS CloudFormation template for this Serverless application",
+        "Resources": {
+          "ServerlessDeploymentBucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+              "BucketEncryption": {
+                "ServerSideEncryptionConfiguration": [
+                  {
+                    "ServerSideEncryptionByDefault": {
+                      "SSEAlgorithm": "AES256"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "LinasBlog": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+              "AccessControl": "PublicRead",
+              "BucketName": "laviedelina.me",
+              "WebsiteConfiguration": {
+                "IndexDocument": "index.html"
+              }
+            }
+          },
+          "LinasBlogS3BucketPolicy": {
+            "Type": "AWS::S3::BucketPolicy",
+            "Properties": {
+              "Bucket": {
+                "Ref": "LinasBlog"
+              },
+              "PolicyDocument": {
+                "Statement": [
+                  {
+                    "Sid": "PublicReadGetObject",
+                    "Effect": "Allow",
+                    "Principal": "*",
+                    "Action": [
+                      "s3:GetObject"
+                    ],
+                    "Resource": {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "arn:aws:s3:::",
+                          {
+                            "Ref": "LinasBlog"
+                          },
+                          "/*"
+                        ]
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "Outputs": {
+          "ServerlessDeploymentBucketName": {
+            "Value": {
+              "Ref": "ServerlessDeploymentBucket"
+            }
+          }
+        }
+      },
+      "coreCloudFormationTemplate": {
+        "AWSTemplateFormatVersion": "2010-09-09",
+        "Description": "The AWS CloudFormation template for this Serverless application",
+        "Resources": {
+          "ServerlessDeploymentBucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+              "BucketEncryption": {
+                "ServerSideEncryptionConfiguration": [
+                  {
+                    "ServerSideEncryptionByDefault": {
+                      "SSEAlgorithm": "AES256"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "Outputs": {
+          "ServerlessDeploymentBucketName": {
+            "Value": {
+              "Ref": "ServerlessDeploymentBucket"
+            }
+          }
+        }
+      }
+    },
+    "custom": {
+      "siteName": "laviedelina.me",
+      "s3Sync": [
+        {
+          "bucketName": "laviedelina.me",
+          "localDir": "build"
+        }
+      ]
+    },
+    "plugins": [
+      "serverless-s3-sync"
+    ],
+    "pluginsData": {},
+    "functions": {},
+    "resources": {
+      "Resources": {
+        "LinasBlog": {
+          "Type": "AWS::S3::Bucket",
+          "Properties": {
+            "AccessControl": "PublicRead",
+            "BucketName": "laviedelina.me",
+            "WebsiteConfiguration": {
+              "IndexDocument": "index.html"
+            }
+          }
+        },
+        "LinasBlogS3BucketPolicy": {
+          "Type": "AWS::S3::BucketPolicy",
+          "Properties": {
+            "Bucket": {
+              "Ref": "LinasBlog"
+            },
+            "PolicyDocument": {
+              "Statement": [
+                {
+                  "Sid": "PublicReadGetObject",
+                  "Effect": "Allow",
+                  "Principal": "*",
+                  "Action": [
+                    "s3:GetObject"
+                  ],
+                  "Resource": {
+                    "Fn::Join": [
+                      "",
+                      [
+                        "arn:aws:s3:::",
+                        {
+                          "Ref": "LinasBlog"
+                        },
+                        "/*"
+                      ]
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "Outputs": {}
+    },
+    "layers": {}
+  },
+  "package": {
+    "artifactDirectoryName": "serverless/linas-blog/dev/1558059941524-2019-05-17T02:25:41.524Z",
+    "artifact": ""
+  }
+}

@@ -1,0 +1,47 @@
+service: linas-blog
+plugins:
+  - serverless-s3-sync
+
+custom:
+  siteName: laviedelina.me
+  s3Sync:
+    - bucketName: laviedelina.me
+      localDir: build
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+resources:
+  Resources:
+    LinasBlog:
+      Type: AWS::S3::Bucket
+      Properties:
+        AccessControl: PublicRead
+        BucketName: laviedelina.me
+        WebsiteConfiguration:
+          IndexDocument: index.html
+
+    LinasBlogS3BucketPolicy:
+      Type: AWS::S3::BucketPolicy
+      Properties:
+        Bucket:
+          Ref: LinasBlog
+        PolicyDocument:
+          Statement:
+            - Sid: PublicReadGetObject
+              Effect: Allow
+              Principal: "*"
+              Action:
+              - s3:GetObject
+              Resource:
+                Fn::Join: [
+                  "", [
+                    "arn:aws:s3:::",
+                    {
+                      "Ref": "LinasBlog"
+                    },
+                    "/*"
+                  ]
+                ]
+
